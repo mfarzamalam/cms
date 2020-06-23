@@ -14,7 +14,10 @@
           <li><a href="matches.php" class="nav-link">Matches</a></li>
           <li><a href="players.php" class="nav-link">Players</a></li>
           <li><a href="blog.php" class="nav-link">Blog</a></li>
+          <li><a href="ground.php" class="nav-link">Grounds</a></li>
           <li><a href="contact.php" class="nav-link">Contact</a></li>
+          <li><a href="register.php" class="nav-link">Register/sign in</a></li>
+          
         </ul>
       </nav>
 
