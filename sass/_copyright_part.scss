@@ -1,0 +1,64 @@
+/**************** copyright part css start ****************/
+.copyright_part{
+    background-color: $footer_bg;
+    padding: 26px 0px;
+    a{
+        color: $btn_bg;
+    }
+    .footer-social{
+        @media #{$small_mobile}{
+            margin-top: 20px;
+        }
+        @media #{$large_mobile}{
+        
+        }
+        @media #{$tab_device}{
+        
+        }
+        @media #{$medium_device}{
+        
+        }
+        a{
+            border: 1px solid #ff8b23;
+            margin-left: 10px;
+            color: #fff;
+            display: inline-block;
+            height: 32px;
+            width: 32px;
+            line-height: 32px;
+            text-align: center;
+            &:hover{
+                background-color: $btn_bg;
+                color: $white_color;
+            }
+            i{
+                &:hover{
+                    color: $white_color;
+            }
+        }
+        [class^="ti-"], [class*=" ti-"] {
+            line-height: 0;
+        }
+    }
+   } 
+   @media #{$small_mobile}{
+        .footer-text{
+            text-align: center;
+        }
+    }
+    @media #{$large_mobile}{
+        .footer-text{
+            text-align: center;
+            margin-bottom: 25px !important;
+        }
+    }
+    @media #{$tab_device}{
+        .footer-text{
+            text-align: center;
+            margin-bottom: 25px !important;
+        }
+    }
+    @media #{$medium_device}{
+
+}
+}

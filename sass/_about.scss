@@ -1,0 +1,173 @@
+/**************** about css start ****************/
+.about_part{
+    position: relative;
+    z-index: 1;
+    margin-top: 120px;
+    @media #{$small_mobile}{
+        margin-top: 70px;
+        padding-bottom: 70px;
+    }
+    @media #{$large_mobile}{
+        margin-top: 70px;
+        padding-bottom: 70px;
+    }
+    @media #{$tab_device}{
+        margin-top: 70px;
+        padding-bottom: 70px;
+    }
+    @media #{$medium_device}{
+        margin-top: 70px;
+    }
+    &:after{
+        position: absolute;
+        content: "";
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 50%;
+        background-color: $section_bg;
+        z-index: -1;
+        @media #{$small_mobile}{
+            width: 0%;
+        }
+        @media #{$large_mobile}{
+            width: 0%;
+        }
+        @media #{$tab_device}{
+        
+        }
+        @media #{$medium_device}{
+        
+        }
+    }
+    .about_img{
+        padding: 100px 0px;
+        img{
+            width: 100%;
+        }
+        @media #{$small_mobile}{
+            padding: 50px 0px 15px;;
+        }
+        @media #{$large_mobile}{
+            padding: 50px 0px 15px;;
+        }
+        @media #{$tab_device}{
+            padding: 50px 0px 15px;;
+        }
+        @media #{$medium_device}{
+        
+        }
+    }
+    .about_text{
+        padding-left: 80px;
+        @media #{$small_mobile}{
+            padding-left: 0px;
+        }
+        @media #{$large_mobile}{
+            padding-left: 0px;
+        }
+        @media #{$tab_device}{
+            padding-left: 0px;
+        }
+        @media #{$medium_device}{
+            padding-left: 0px;
+        }
+        @media #{$big_screen}{
+            padding-left: 80px;
+            margin-right: -125px;
+        }
+        
+        h4{
+            margin-bottom: 20px;
+        }
+        h2{
+            line-height: 1.25;
+            margin-bottom: 25px;
+            @media #{$small_mobile}{
+                 
+            }
+            @media #{$large_mobile}{
+                
+            }
+            @media #{$tab_device}{
+                font-size: 25px;  
+                margin-bottom: 15px;
+            }
+            @media #{$medium_device}{
+                font-size: 25px;  
+                margin-bottom: 15px;
+            }
+        }
+        p{
+            margin-top: 13px;
+        }
+    }
+}
+.recreational_part{
+    margin-bottom: 130px;
+    position: relative;
+    @media #{$small_mobile}{
+        margin-bottom: 70px;
+    }
+    @media #{$large_mobile}{
+        margin-bottom: 70px;
+    }
+    @media #{$tab_device}{
+        margin-bottom: 70px;
+    }
+    @media #{$medium_device}{
+        margin-bottom: 70px;
+    }
+    &:after{
+        right: 0;
+        left: auto;
+        width: 50%;
+        @media #{$small_mobile}{
+            width: 0%;
+        }
+        @media #{$large_mobile}{
+            width: 0%;
+        }
+        @media #{$tab_device}{
+        
+        }
+        @media #{$medium_device}{
+        
+        }
+    }
+    .about_img img {
+        width: 100%;
+        margin-left: 73px;
+        @media #{$small_mobile}{
+            margin-left: 0px;
+        }
+        @media #{$large_mobile}{
+            padding-left: 0px;
+        }
+        @media #{$tab_device}{
+        
+        }
+        @media #{$medium_device}{
+        
+        }
+    }
+    .about_text {
+        padding-left: 110px;
+        @media #{$small_mobile}{
+            padding-left: 0px;
+        }
+        @media #{$large_mobile}{
+            padding-left: 0px;
+        }
+        @media #{$tab_device}{
+            padding-left: 0px;
+        }
+        @media #{$medium_device}{
+            padding-left: 0px;
+        }
+        @media #{$big_screen}{
+            padding-left: 0px;
+            margin-right: 0px;
+        }
+    }
+}

@@ -1,0 +1,118 @@
+/**************** player_info css start ****************/
+.player_info{
+    background-color: $section_bg;
+    position: relative;
+    @media #{$small_mobile}{
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    @media #{$large_mobile}{
+    
+    }
+    @media #{$tab_device}{
+    
+    }
+    @media #{$medium_device}{
+    
+    }
+    .arrey_icon {
+        fill: $btn_bg;
+    }
+    
+    .player_info_text{
+        h3{
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            @media #{$small_mobile}{
+                margin-top: 25px;
+                margin-bottom: 15px;
+            }
+            @media #{$large_mobile}{
+                margin-top: 25px;
+                margin-bottom: 15px;
+            }
+            @media #{$tab_device}{
+            
+            }
+            @media #{$medium_device}{
+            
+            }
+        }
+        a{
+            font-size: 13px;
+            color: $btn_bg;
+            margin-right: 20px;
+            text-transform: capitalize;
+            font-weight: 400;
+            font-family: $font_stack_1;
+        }
+        p{
+            margin-bottom: 35px;
+            line-height: 1.857;
+            color: rgb(138, 138, 138);
+            font-family: $font_stack_1;
+            font-weight: 300;
+            @media #{$small_mobile}{
+                margin-bottom: 20px;
+            }
+            @media #{$large_mobile}{
+                margin-bottom: 20px;
+            }
+            @media #{$tab_device}{
+                margin-bottom: 20px;
+            }
+            @media #{$medium_device}{
+            
+            }
+        }
+        img{
+            max-width: 50px;
+            display: inline;
+        }
+    }
+    .owl-nav{
+        position: absolute;
+        right: 26%;
+        bottom: 41px;
+        .owl-prev {
+            margin-bottom: -5px;
+            margin-left: -25px;
+        }
+        @media #{$small_mobile}{
+            position: absolute;
+            right: 14%;
+            bottom: 10px;
+        }
+        @media #{$large_mobile}{
+            position: absolute;
+            right: 14%;
+            bottom: 10px;
+        }
+        @media #{$tab_device}{
+            position: absolute;
+            right: 13%;
+            bottom: 12px;
+        }
+        @media #{$medium_device}{
+        
+        }
+        
+    }
+    @media #{$small_mobile}{
+
+    }
+    @media #{$large_mobile}{
+    
+    }
+    @media #{$tab_device}{
+    .player_info_img{
+        img{
+            margin-top: -61px;
+        }
+    }
+    }
+    @media #{$medium_device}{
+    
+    }
+}
