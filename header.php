@@ -10,8 +10,12 @@
                   </div>
                   <div class="col-md-8 col-xl-6">
                       <div class="sub_header_social_icon float-right">
+                        <?php if(!isset($_SESSION['username'])) { ?>
                         <a href="registerForm.php" class="register_icon"><i class="ti-arrow-right"></i>REGISTER</a>
                         <a href="loginForm.php" class="register_icon"><i class="ti-arrow-right"></i>LOGIN</a>
+                        <?php } else {?>
+                        <a href="logout.php" class="register_icon"><i class="ti-arrow-right"></i>LOGOUT</a>
+                        <?php }?>
                         <br/>
                         <br/>
                         <a href="#"><i class="flaticon-phone"></i>+02 213 - 256 (365)</a>
@@ -37,6 +41,9 @@
                                     <li class="nav-item">
                                         <a href="about.php" class="nav-link">About us</a>
                                     </li>
+        
+                                    <?php if(isset($_SESSION['username'])) { ?>
+
                                     <li class="nav-item">
                                         <a href="team.php" class="nav-link">team</a>
                                     </li>
@@ -44,6 +51,7 @@
                                         <a href="gallery.php" class="nav-link">gallery</a>
                                     </li>
 
+                                    <?php } ?>
                                     <!-- <li class="nav-item dropdown">
                                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             Pages
