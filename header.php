@@ -10,8 +10,8 @@
                   </div>
                   <div class="col-md-8 col-xl-6">
                       <div class="sub_header_social_icon float-right">
-                        <a href="register.php" class="register_icon"><i class="ti-arrow-right"></i>REGISTER</a>
-                        <a href="login.php" class="register_icon"><i class="ti-arrow-right"></i>login</a>
+                        <a href="registerForm.php" class="register_icon"><i class="ti-arrow-right"></i>REGISTER</a>
+                        <a href="loginForm.php" class="register_icon"><i class="ti-arrow-right"></i>LOGIN</a>
                         <br/>
                         <br/>
                         <a href="#"><i class="flaticon-phone"></i>+02 213 - 256 (365)</a>

@@ -1,113 +1,62 @@
-<?php include 'connection.php'; ?>
+<?php
+    include 'connection.php';
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Sign Up Form by Colorlib</title>
+    if(isset($_POST['signupclub'])){
+        $clubname=$_POST['clubname'];
+        $clubdes=$_POST['clubdes'];
+        $clubuiltyear=$_POST['clubuiltyear'];
+        $clubpresident=$_POST['clubpresident'];
+        $clubpresidentnum=$_POST['clubpresidentnum'];
+        $clubVicePresident=$_POST['clubVicePresident'];
+        $clubsecretary=$_POST['clubsecretary'];
+        $clubsecretarynum=$_POST['clubsecretarynum'];
+        $clubtreasurer=$_POST['clubtreasurer'];
+        $clubmanagement=$_POST['clubmanagement'];
+        $clubrelation=$_POST['clubrelation'];
+        $username=$_POST['username'];
+        $pass=$_POST['pass'];
 
-    <!-- Font Icon -->
-    <link rel="stylesheet" href="login/fonts/material-icon/css/material-design-iconic-font.min.css">
+            $q = "SELECT * FROM `signin_club`"; // first check wether username is already exist or not
+            $r = mysqli_query($conn,$q);        
 
-    <!-- Main css -->
-    <link rel="stylesheet" href="login/css/mylife.css">
+            while($complete = mysqli_fetch_assoc($r) ){
+                $clubcheck = $complete['username'];
 
-    <?php include 'headerlink.php'; ?>
+                if($username == $clubcheck){    // comparing with all the username exist in the table
+                    // print_r($clubcheck);
+                    header('location:registerForm.php?error=username is already exist');
+                    exit();     // if yes then registration will exit
+                }
+            }
 
-</head>
-<body>
+            // if username is unique then registration continue
+            $query = "INSERT INTO register_club (`club_name`,`club_des`,`club_built_year`,
+                                                    `club_president`,`club_president_num`,`club_vice_president`,
+                                                    `club_secretary`,`club_secretary_num`,`club_treasurer`,
+                                                    `club_management`,`relation_with_club`)
+                                            VALUES ('$clubname','$clubdes','$clubuiltyear',
+                                                    '$clubpresident','$clubpresidentnum','$clubVicePresident',
+                                                    '$clubsecretary','$clubsecretarynum','$clubtreasurer',
+                                                    '$clubmanagement','$clubrelation')";
+            $result = mysqli_query($conn,$query);
 
-    <?php include 'header.php'; ?>
+            // get the last record in register table using desc order from club code
 
-    <div class="main">
+            $query2 = "SELECT * FROM `register_club` ORDER BY `club_code` DESC";
+            $result2 = mysqli_query($conn,$query2);
+            $row = mysqli_fetch_assoc($result2);
+                $cc = $row['club_code'];    // put that code in a seprate variable
 
-        <!-- Sign up form -->
-        <section class="signup">
-            <div class="container">
-                <div class="signup-content">
-                    <div class="signup-form">
-                        <h2 class="form-title">Sign up</h2>
-                        <form method="POST" class="register-form" id="register-form">
-                            <div class="form-group">
-                                <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="name" id="name" placeholder="Your Name"/>
-                            </div>
-                            <div class="form-group">
-                                <label for="email"><i class="zmdi zmdi-email"></i></label>
-                                <input type="email" name="email" id="email" placeholder="Your Email"/>
-                            </div>
-                            <div class="form-group">
-                                <label for="pass"><i class="zmdi zmdi-lock"></i></label>
-                                <input type="password" name="pass" id="pass" placeholder="Password"/>
-                            </div>
-                            <div class="form-group">
-                                <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
-                                <input type="password" name="re_pass" id="re_pass" placeholder="Repeat your password"/>
-                            </div>
-                            <div class="form-group">
-                                <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
-                                <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
-                            </div>
-                            <div class="form-group form-button">
-                                <input type="submit" name="signup" id="signup" class="form-submit" value="Register"/>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="signup-image">
-                        <figure><img src="login/images/signup-image.jpg" alt="sing up image"></figure>
-                        <a href="#" class="signup-image-link">I am already member</a>
-                    </div>
-                </div>
-            </div>
-        </section>
+                // add that club code in signin club table
 
-        <!-- Sing in  Form -->
-        <section class="sign-in">
-            <div class="container">
-                <div class="signin-content">
-                    <div class="signin-image">
-                        <figure><img src="login/images/signin-image.jpg" alt="sing up image"></figure>
-                        <a href="#" class="signup-image-link">Create an account</a>
-                    </div>
+                $query3 = "INSERT INTO signin_club (`club_code`,`username`,`password`) VALUES ('$cc','$username','$pass')";
+                $result3 = mysqli_query($conn,$query3);
 
-                    <div class="signin-form">
-                        <h2 class="form-title">Sign up</h2>
-                        <form method="POST" class="register-form" id="login-form">
-                            <div class="form-group">
-                                <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="your_name" id="your_name" placeholder="Your Name"/>
-                            </div>
-                            <div class="form-group">
-                                <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
-                                <input type="password" name="your_pass" id="your_pass" placeholder="Password"/>
-                            </div>
-                            <div class="form-group">
-                                <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
-                                <label for="remember-me" class="label-agree-term"><span><span></span></span>Remember me</label>
-                            </div>
-                            <div class="form-group form-button">
-                                <input type="submit" name="signin" id="signin" class="form-submit" value="Log in"/>
-                            </div>
-                        </form>
-                        <div class="social-login">
-                            <span class="social-label">Or login with</span>
-                            <ul class="socials">
-                                <li><a href="#"><i class="display-flex-center zmdi zmdi-facebook"></i></a></li>
-                                <li><a href="#"><i class="display-flex-center zmdi zmdi-twitter"></i></a></li>
-                                <li><a href="#"><i class="display-flex-center zmdi zmdi-google"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-    </div>
-
-    <!-- JS -->
-    <!-- <script src="login/vendor/jquery/jquery.min.js"></script> -->
-    <!-- <script src="login/js/main.js"></script> -->
-</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
-</html>
+                if($result && $result3){        // check both the queries perform well.
+                    header('location:loginForm.php?success=Successfully registered');
+                }else {         // if not then else block will run                  
+                    header('location:registerForm.php?error=Failed to register');
+                }
+        
+    }
+?>
