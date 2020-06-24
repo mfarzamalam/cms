@@ -1,3 +1,5 @@
+<?php include 'connection.php'; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,8 +13,13 @@
 
     <!-- Main css -->
     <link rel="stylesheet" href="login/css/mylife.css">
+
+    <?php include 'headerlink.php'; ?>
+
 </head>
 <body>
+
+    <?php include 'header.php'; ?>
 
     <div class="main">
 
