@@ -29,12 +29,12 @@
                 <div class="signin-content">
                     <div class="signin-image">
                         <figure><img src="login/images/signin-image.jpg" alt="sing up image"></figure>
-                        <a href="registerForm.php" class="signup-image-link">Create an account</a>
+                        <a href="ClubRegisterForm.php" class="signup-image-link">Create an account</a>
                     </div>
 
                     <div class="signin-form">
                         <h2 class="form-title">Sign In as club</h2>
-                        <form method="POST" action="login.php" class="register-form" id="login-form">
+                        <form method="POST" action="ClubLogin.php" class="register-form" id="login-form">
                             <div class="form-group">
                                 <label for="username"><i class="zmdi zmdi-account material-icons-name"></i></label>
                                 <input type="text" name="username" id="username" placeholder="Username"/>
@@ -45,7 +45,10 @@
                             </div>
                             <div class="form-group">
                                 <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
-                                <label for="remember-me" class="label-agree-term"><span><span></span></span>Remember me</label>
+                                <label for="remember-me" class="label-agree-term"><span><span></span></span>Remember me</label><br>
+                                <?php if (!isset($_GET['error']) == "") {?>
+                                    <label style="color: red; font-size: 25px;" class="label-agree-term"><span><span></span></span><?php echo $_GET['error']; ?></label>
+                                <?php } ?>
                             </div>
                             <div class="form-group form-button">
                                 <input type="submit" name="LOGIN" id="signin" class="form-submit" value="Log in"/>

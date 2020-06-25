@@ -11,8 +11,8 @@
                   <div class="col-md-8 col-xl-6">
                       <div class="sub_header_social_icon float-right">
                         <?php if(!isset($_SESSION['username'])) { ?>
-                        <a href="registerForm.php" class="register_icon"><i class="ti-arrow-right"></i>REGISTER</a>
-                        <a href="loginForm.php" class="register_icon"><i class="ti-arrow-right"></i>LOGIN</a>
+                        <a href="SignUpSelector.php" class="register_icon"><i class="ti-arrow-right"></i>REGISTER</a>
+                        <a href="LoginSelector.php" class="register_icon"><i class="ti-arrow-right"></i>LOGIN</a>
                         <?php } else {?>
                         <a href="logout.php" class="register_icon"><i class="ti-arrow-right"></i>LOGOUT</a>
                         <?php }?>

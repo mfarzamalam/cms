@@ -16,6 +16,11 @@
         $username=$_POST['username'];
         $pass=$_POST['pass'];
 
+            if(empty($clubname) || empty($clubpresident) || empty($clubpresidentnum) || empty($clubsecretary) || empty($clubsecretarynum) || empty($username)){
+                header('location:ClubRegisterForm.php?error=Please fill all the textboxes');
+                exit();
+            }
+
             $q = "SELECT * FROM `signin_club`"; // first check wether username is already exist or not
             $r = mysqli_query($conn,$q);        
 
@@ -24,7 +29,7 @@
 
                 if($username == $clubcheck){    // comparing with all the username exist in the table
                     // print_r($clubcheck);
-                    header('location:registerForm.php?error=username is already exist');
+                    header('location:ClubRegisterForm.php?error=username is already exist');
                     exit();     // if yes then registration will exit
                 }
             }
@@ -53,9 +58,9 @@
                 $result3 = mysqli_query($conn,$query3);
 
                 if($result && $result3){        // check both the queries perform well.
-                    header('location:loginForm.php?success=Successfully registered');
+                    header('location:ClubLoginForm.php');
                 }else {         // if not then else block will run                  
-                    header('location:registerForm.php?error=Failed to register');
+                    header('location:ClubRegisterForm.php?error=Failed to register');
                 }
         
     }

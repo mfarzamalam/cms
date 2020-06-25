@@ -29,7 +29,7 @@
                 <div class="signup-content">
                     <div class="signup-form">
                         <h2 class="form-title">Sign up as a Club</h2>
-                        <form method="POST" action="register.php" class="register-form" id="register-form">
+                        <form method="POST" action="ClubRegister.php" class="register-form" id="register-form">
                             <div class="form-group">
                                 <label for="clubname"><i class="zmdi zmdi-account material-icons-name"></i></label>
                                 <input type="text" name="clubname" id="clubname" placeholder="Club name"/>
@@ -99,11 +99,8 @@
                                 <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
                                 <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
                                 <br>
-                                <?php if (isset($_GET['error']) !== "") {?>
-                                <label style="color: red; font-size: 25px;" for="agree-term" class="label-agree-term"><span><span></span></span><?php echo $_GET['error']?></label>
-                                <?php  } ?>
-                                <?php if (isset($_GET['success']) !== "") {?>
-                                <label style="color: green; font-size: 25px;" for="agree-term" class="label-agree-term"><span><span></span></span><?php echo $_GET['success']?></label>
+                                <?php if (!isset($_GET['error']) == "") {?>
+                                <label style="color: red; font-size: 25px;" class="label-agree-term"><span><span></span></span><?php echo $_GET['error']?></label>
                                 <?php  } ?>
                             </div>
                             <div class="form-group form-button">
@@ -113,7 +110,7 @@
                     </div>
                     <div class="signup-image">
                         <figure><img src="login/images/signup-image.jpg" alt="sing up image"></figure>
-                        <a href="login.php" class="signup-image-link">I am already member</a>
+                        <a href="ClubLoginForm.php" class="signup-image-link">I am already member</a>
                     </div>
                 </div>
             </div>
