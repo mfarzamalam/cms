@@ -20,6 +20,7 @@
     
                 $_SESSION['username'] = $username;
                 $_SESSION['club_name'] = $row2['club_name'];
+                $_SESSION['club_code'] = $row2['club_code'];
     
                 header("location:index.php");
             } else {

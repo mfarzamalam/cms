@@ -36,7 +36,7 @@
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                 <ul class="navbar-nav mr-auto">
                                     <li class="nav-item active">
-                                        <a class="nav-link active" href="index.php">Home</a>
+                                        <a href="index.php" class="nav-link">Home</a>
                                     </li>
                                     <li class="nav-item">
                                         <a href="about.php" class="nav-link">About us</a>
@@ -47,6 +47,17 @@
                                     <li class="nav-item">
                                         <a href="team.php" class="nav-link">team</a>
                                     </li>
+
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Ground
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item" href="groundAddForm.php">Add ground</a>
+                                            <a class="dropdown-item" href="groundViewForm.php">View ground</a>
+                                        </div>
+                                    </li>
+
                                     <li class="nav-item">
                                         <a href="gallery.php" class="nav-link">gallery</a>
                                     </li>
