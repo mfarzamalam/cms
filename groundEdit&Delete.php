@@ -44,6 +44,17 @@
 
     }else if (isset($_POST['Delete'])){
         
+        $groundcode=$_POST['groundcode'];
+        
+        $q = "DELETE FROM `grounds` WHERE `ground_code`='$groundcode'";
+
+        $r = mysqli_query($conn,$q);
+
+        if($r){
+            header('location:groundViewForm.php');
+        }else {
+            header('location:groundViewForm.php');
+        }
     }
 
 ?>
