@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 25, 2020 at 08:18 AM
+-- Generation Time: Jun 28, 2020 at 06:24 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.6
 
@@ -33,8 +33,10 @@ CREATE TABLE `grounds` (
   `ground_des` varchar(250) NOT NULL,
   `club_code` int(11) NOT NULL,
   `ground_owner` varchar(50) NOT NULL,
-  `rent_day` tinyint(1) NOT NULL,
-  `rent_night` tinyint(1) NOT NULL
+  `ground_owner_num` varchar(11) NOT NULL,
+  `rent_day` varchar(5) DEFAULT NULL,
+  `rent_night` varchar(5) DEFAULT NULL,
+  `available` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -124,7 +126,7 @@ CREATE TABLE `signin_club` (
 --
 
 INSERT INTO `signin_club` (`club_code`, `username`, `password`) VALUES
-(68, 'bores', '12345');
+(68, 'b', 'b');
 
 -- --------------------------------------------------------
 
@@ -244,7 +246,7 @@ ALTER TABLE `training_register`
 -- AUTO_INCREMENT for table `grounds`
 --
 ALTER TABLE `grounds`
-  MODIFY `ground_code` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ground_code` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `register_club`

@@ -51,9 +51,9 @@
         $r = mysqli_query($conn,$q);
 
         if($r){
-            header('location:groundViewForm.php');
+            header('location:groundAddForm.php');
         }else {
-            header('location:groundViewForm.php');
+            header('location:groundAddForm.php');
         }
     }
 
