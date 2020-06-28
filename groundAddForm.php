@@ -128,6 +128,9 @@
                                 </div>
                             </div>
                             <div>
+                                <?php if(isset($_GET['error'])) { ?>
+                                    <label style="color: red;" class="label label--block"> <?php echo $_GET['error'] ?></label>
+                                <?php } ?>
                                 <button class="btn btn--radius-2 btn--red" name="register" type="submit">Register</button>
                             </div>
                         </form>
