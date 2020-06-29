@@ -58,6 +58,17 @@
                                         </div>
                                     </li>
 
+
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Training Batches
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item" href="batchAddForm.php">Add New batch</a>
+                                            <a class="dropdown-item" href="batchViewForm.php">View Batches</a>
+                                        </div>
+                                    </li>
+
                                     <li class="nav-item">
                                         <a href="gallery.php" class="nav-link">gallery</a>
                                     </li>
