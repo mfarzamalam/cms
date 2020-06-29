@@ -42,7 +42,7 @@
             </section>
         <!--::breadcrumb part end::-->
 
-        <form method="POST" action="groundAdd.php" class="page-wrapper p-t-45 p-b-50">
+        <form method="POST" action="batchAdd.php" class="page-wrapper p-t-45 p-b-50">
             <div class="wrapper wrapper--w790">
                 <div class="card card-5">
                     <div class="card-heading">
@@ -51,18 +51,18 @@
                     <div class="card-body">
                         <form method="POST">
                         <div class="form-row">
-                                <div class="name">Ground Name</div>
+                                <div class="name">Batch Name</div>
                                 <div class="value">
                                     <div class="input-group">
-                                        <input class="input--style-5" type="date" name="groundname">
+                                        <input class="input--style-5" type="text" name="batchname">
                                     </div>
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div class="name">Ground Description</div>
+                                <div class="name">Batch Description</div>
                                 <div class="value">
                                     <div class="input-group">
-                                        <input class="input--style-5" type="text" name="grounddes">
+                                        <input class="input--style-5" type="text" name="batchdes">
                                     </div>
                                 </div>
                             </div>
@@ -73,66 +73,70 @@
                                     </div>
                                 </div>
                             </div>
+                            
                             <div class="form-row">
-                                <div class="name">Ground Owner</div>
+                                <div class="name">Registration Start Date</div>
                                 <div class="value">
                                     <div class="input-group">
-                                        <input class="input--style-5" type="text" name="groundowner">
+                                        <input class="input--style-5" type="date" name="sdate">
                                     </div>
                                 </div>
                             </div>
 
                             <div class="form-row">
-                                <div class="name">Ground Owner Number</div>
+                                <div class="name">Registration End Date</div>
                                 <div class="value">
                                     <div class="input-group">
-                                        <input class="input--style-5" type="text" name="grondownernumber">
+                                        <input class="input--style-5" type="date" name="edate">
                                     </div>
                                 </div>
                             </div>
 
-
                             <div class="form-row">
-                                <div class="name">Ground Availability</div>
+                                <div class="name">Member limit</div>
                                 <div class="value">
                                     <div class="input-group">
-                                        <input type="checkbox" id ="chk" name='available[]' value="Day">Day
-                                            <br>
-                                        <input type="checkbox" id ="chk" name='available[]' value="Night">Night
+                                        <input class="input--style-5" type="number" name="mlimit">
+                                    </div>
+                                </div>
+                            </div>                            
+                            
+                            <div class="form-row">
+                                <div class="name">Eligiblity Criteria</div>
+                                <div class="value">
+                                    <div class="input-group">
+                                        <input class="input--style-5" type="text" name="ecr">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="name">Fees (Rs)</div>
+                                <div class="value">
+                                    <div class="input-group">
+                                        <input class="input--style-5" type="number" name="fees">
                                     </div>
                                 </div>
                             </div>
                             
-                            
-                            <!-- <div class="form-row">
-                                <div class="name">Subject</div>
+                            <div class="form-row">
+                                <div class="name">Coach Name</div>
                                 <div class="value">
                                     <div class="input-group">
-                                        <div class="rs-select2 js-select-simple select--no-search">
-                                            <select name="subject">
-                                                <option disabled="disabled" selected="selected">Choose option</option>
-                                                <option>Subject 1</option>
-                                                <option>Subject 2</option>
-                                                <option>Subject 3</option>
-                                            </select>
-                                            <div class="select-dropdown"></div>
-                                        </div>
+                                        <input class="input--style-5" type="text" name="cname1">
                                     </div>
                                 </div>
-                            </div> -->
-                            <div class="form-row p-t-20">
-                                <label class="label label--block">Your ground is ready for booking?</label>
-                                <div class="p-t-15">
-                                    <label class="radio-container m-r-55">Yes
-                                        <input type="radio" checked="checked" name="RadioSelect" value="Yes">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                    <label class="radio-container">No
-                                        <input type="radio" name="RadioSelect" value="No">
-                                        <span class="checkmark"></span>
-                                    </label>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="name">Second Coach Name (Optional) </div>
+                                <div class="value">
+                                    <div class="input-group">
+                                        <input class="input--style-5" type="text" name="cname2">
+                                    </div>
                                 </div>
                             </div>
+
                             <div>
                                 <?php if(isset($_GET['error'])) { ?>
                                     <label style="color: red;" class="label label--block"> <?php echo $_GET['error'] ?></label>

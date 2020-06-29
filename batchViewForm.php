@@ -1,5 +1,5 @@
 <?php include 'connection.php'; 
-        $q = "SELECT * FROM `grounds`";
+        $q = "SELECT * FROM `training_batch`";
         $r = mysqli_query($conn,$q);
 ?>
 
@@ -41,110 +41,112 @@
 
     <?php while($res = mysqli_fetch_assoc($r)) { ?>
 
-        <form method="POST" action="groundEdit&Delete.php" class="page-wrapper p-t-45 p-b-50">
+        <form method="POST" action="batchEdit&Delete.php" class="page-wrapper p-t-45 p-b-50">
             <div class="wrapper wrapper--w790">
-                <div class="card card-5">
-                    <div class="card-heading">
-                        <h2 class="title">Your Batches</h2>
-                    </div>
-                    <div class="card-body">
-                        <form method="POST">
-                        <div class="form-row">
-                                <div class="name">Ground Name</div>
-                                <div class="value">
-                                    <div class="input-group">
-                                        <input class="input--style-5" type="text" name="groundname" value="<?php echo $res['ground_name'] ?>" >
-                                    </div>
-                                </div>
-                            </div>
+                    <div class="card card-5">
+                        <div class="card-heading">
+                            <h2 class="title">View Your Batches</h2>
+                        </div>
+                        <div class="card-body">
+                            <form method="POST">
                             <div class="form-row">
-                                <div class="name">Ground Description</div>
-                                <div class="value">
-                                    <div class="input-group">
-                                        <input class="input--style-5" type="text" name="grounddes" value="<?php echo $res['ground_des'] ?>">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="value">
-                                    <div class="input-group">
-                                        <input class="input--style-5" type="hidden" name="groundcode" value="<?php echo $res['ground_code']; ?>">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="name">Ground Owner</div>
-                                <div class="value">
-                                    <div class="input-group">
-                                        <input class="input--style-5" type="text" name="groundowner" value="<?php echo $res['ground_owner'] ?>">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-row">
-                                <div class="name">Ground Owner Number</div>
-                                <div class="value">
-                                    <div class="input-group">
-                                        <input class="input--style-5" type="text" name="grondownernumber" value="<?php echo $res['ground_owner_num'] ?>">
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div class="form-row">
-                                <div class="name">Ground Availability</div>
-                                <div class="value">
-                                    <div class="input-group">
-                                        <input type="checkbox" id ="chk" name='available[]' value="Day" <?php if($res['rent_day'] == "Yes"){ echo "Checked"; } ?>>Day
-                                            <br>
-                                        <input type="checkbox" id ="chk" name='available[]' value="Night" <?php if($res['rent_night'] == "Yes"){ echo "Checked"; } ?>>Night
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            
-                            <!-- <div class="form-row">
-                                <div class="name">Subject</div>
-                                <div class="value">
-                                    <div class="input-group">
-                                        <div class="rs-select2 js-select-simple select--no-search">
-                                            <select name="subject">
-                                                <option disabled="disabled" selected="selected">Choose option</option>
-                                                <option>Subject 1</option>
-                                                <option>Subject 2</option>
-                                                <option>Subject 3</option>
-                                            </select>
-                                            <div class="select-dropdown"></div>
+                                    <div class="name">Batch Name</div>
+                                    <div class="value">
+                                        <div class="input-group">
+                                            <input class="input--style-5" type="text" name="batchname" value="<?php echo $res['batch_name']?>">
                                         </div>
                                     </div>
                                 </div>
-                            </div> -->
-                            <div class="form-row p-t-20">
-                                <label class="label label--block">Your ground is ready for booking?</label>
-                                <div class="p-t-15">
-                                    <label class="radio-container m-r-55">Yes
-                                        <input type="radio" name="RadioSelect" value="Yes" <?php if($res['available'] == "Yes"){ echo "Checked"; } ?>>
-                                        <span class="checkmark"></span>
-                                    </label>
-                                    <label class="radio-container">No
-                                        <input type="radio" name="RadioSelect" value="No" <?php if($res['available'] == "No"){ echo "Checked"; } ?>>
-                                        <span class="checkmark"></span>
-                                    </label>
+                                <div class="form-row">
+                                    <div class="name">Batch Description</div>
+                                    <div class="value">
+                                        <div class="input-group">
+                                            <input class="input--style-5" type="text" name="batchdes" value="<?php echo $res['batch_des']?>">
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div>
-                                <?php if(isset($_GET['error'])) { ?>
-                                    <label style="color: red;" class="label label--block"> <?php echo $_GET['error'] ?></label>
-                                <?php } ?>
-                                <button class="btn btn--radius-2 btn--red" name="Edit" type="submit">Edit</button>
-                                <button class="btn btn--radius-2 btn--red" name="Delete" type="submit">Delete</button>
-                            </div>
-                        </form>
-                        
+                                <div class="form-row">
+                                    <div class="value">
+                                        <div class="input-group">
+                                            <input class="input--style-5" type="hidden" name="batchcode" value="<?php echo $res['batch_code']?>">
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="name">Registration Start Date</div>
+                                    <div class="value">
+                                        <div class="input-group">
+                                            <input class="input--style-5" type="date" name="sdate" value="<?php echo $res['start_date']?>">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="name">Registration End Date</div>
+                                    <div class="value">
+                                        <div class="input-group">
+                                            <input class="input--style-5" type="date" name="edate" value="<?php echo $res['end_date']?>">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="name">Member limit</div>
+                                    <div class="value">
+                                        <div class="input-group">
+                                            <input class="input--style-5" type="number" name="mlimit" value="<?php echo $res['member_limit']?>">
+                                        </div>
+                                    </div>
+                                </div>                            
+                                
+                                <div class="form-row">
+                                    <div class="name">Eligiblity Criteria</div>
+                                    <div class="value">
+                                        <div class="input-group">
+                                            <input class="input--style-5" type="text" name="ecr" value="<?php echo $res['eligible_criteria']?>">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="name">Fees (Rs)</div>
+                                    <div class="value">
+                                        <div class="input-group">
+                                            <input class="input--style-5" type="number" name="fees" value="<?php echo $res['fees']?>">
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="name">Coach Name</div>
+                                    <div class="value">
+                                        <div class="input-group">
+                                            <input class="input--style-5" type="text" name="cname1" value="<?php echo $res['coach_name']?>">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="name">Second Coach Name (Optional) </div>
+                                    <div class="value">
+                                        <div class="input-group">
+                                            <input class="input--style-5" type="text" name="cname2" value="<?php echo $res['coach_name2']?>">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <?php if(isset($_GET['error'])) { ?>
+                                        <label style="color: red;" class="label label--block"> <?php echo $_GET['error'] ?></label>
+                                    <?php } ?>
+                                    <button class="btn btn--radius-2 btn--red" name="Edit" type="submit">Edit</button>
+                                    <button class="btn btn--radius-2 btn--red" name="Delete" type="submit">Delete</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                    
                 </div>
-            </div>
         </form>
 
                                 <?php } ?>

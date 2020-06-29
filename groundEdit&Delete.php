@@ -3,6 +3,7 @@
     include 'connection.php' ;
 
     if(isset($_POST['Edit'])){
+        
          $groundname=$_POST['groundname'];
          $grounddes=$_POST['grounddes'];
          $groundcode=$_POST['groundcode'];
