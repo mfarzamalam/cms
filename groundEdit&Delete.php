@@ -33,7 +33,7 @@
 
         $query = "UPDATE grounds SET `ground_name`='$groundname', `ground_des`='$grounddes', `club_code`='$_SESSION[club_code]',
                                     `ground_owner`='$groundowner', `ground_owner_num`='$grondownernumber', `rent_day`='$Day',
-                                    `rent_night`='$Night', `available`='$available' WHERE `ground_code`='$groundcode')";
+                                    `rent_night`='$Night', `available`='$available' WHERE `ground_code`='$groundcode'";
     
         $result = mysqli_query($conn,$query);
         
