@@ -14,12 +14,13 @@
                 $row = mysqli_fetch_array($result);
                 $cc = $row['member_code'];
     
-                $query2 = "SELECT * FROM `register_club` WHERE `member_code`='$cc'";
+                $query2 = "SELECT * FROM `register_member` WHERE `member_code`='$cc'";
                 $result2 = mysqli_query($conn,$query2);
                 $row2 = mysqli_fetch_assoc($result2);
     
                 $_SESSION['username'] = $username;
                 $_SESSION['member_code'] = $row2['member_code'];
+                $_SESSION['member_name'] = $row2['member_name'];
     
                 header("location:index.php");
             } else {

@@ -42,7 +42,7 @@
                                         <a href="about.php" class="nav-link">About us</a>
                                     </li>
         
-                                    <?php if(isset($_SESSION['username'])) { ?>
+                    <?php if(isset($_SESSION['club_name'])) { ?>
 
                                     <li class="nav-item">
                                         <a href="team.php" class="nav-link">team</a>
@@ -73,7 +73,17 @@
                                         <a href="gallery.php" class="nav-link">gallery</a>
                                     </li>
 
-                                    <?php } ?>
+                        <?php } else if (isset($_SESSION['member_name'])) { ?>
+
+                                <li class="nav-item">
+                                        <a href=".php" class="nav-link">Training Register</a>
+                                </li>
+
+                                <li class="nav-item">
+                                        <a href=".php" class="nav-link">Ground booking</a>
+                                </li>
+
+                        <?php } ?>
                                     <!-- <li class="nav-item dropdown">
                                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             Pages
