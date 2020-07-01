@@ -76,11 +76,11 @@
                         <?php } else if (isset($_SESSION['member_name'])) { ?>
 
                                 <li class="nav-item">
-                                        <a href=".php" class="nav-link">Training Register</a>
+                                        <a href="trainingForm.php" class="nav-link">Training Register</a>
                                 </li>
 
                                 <li class="nav-item">
-                                        <a href=".php" class="nav-link">Ground booking</a>
+                                        <a href="bookingForm.php" class="nav-link">Ground booking</a>
                                 </li>
 
                         <?php } ?>
