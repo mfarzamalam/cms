@@ -1,8 +1,8 @@
 <?php include 'connection.php'; 
 
     $q = "SELECT * FROM training_batch";
-    $r = mysqli_query($conn,$q);
-
+    $qr = mysqli_query($conn,$q);
+    
 ?>
 
 <!doctype html>
@@ -41,18 +41,30 @@
             </section>
         <!--::breadcrumb part end::-->
 
-    <?php while($c = mysqli_fetch_assoc($r)) { ?>
+    <?php while($c = mysqli_fetch_assoc($qr)) { 
+            $s = "SELECT * FROM `training_register` WHERE `batch_code`=$c[batch_code]";
+            $sr = mysqli_query($conn,$s);
+            $total = "";
+            
+            while($sa = mysqli_fetch_assoc($sr)){
+            
+            $total = $sa['available_seats'] - $sa['register_seats'];
+        }        
+        
+        ?>
         <form method="POST" action="trainingSub.php" class="page-wrapper p-t-45 p-b-50">
             <div class="wrapper wrapper--w790">
                 <div class="card card-5">
                     <div class="card-heading">
                         <h2 class="title">Training Registration Form</h2>
                     </div>
+                    
                     <div class="card-body">                        
                         <input type="hidden" name="batchcode" value="<?php echo $c['batch_code']?>">
                         <input type="hidden" name="membercode" value="<?php echo $_SESSION['member_code']?>">
-                        <input type="hidden" name="Aseats" value="<?php echo $c['member_limit']?>">
                         <input type="hidden" name="fees" value="<?php echo $c['fees']?>">
+                        <input type="hidden" name="Aseats" value="<?php echo $c['member_limit']?>">
+                    
 
                         <div class="form-row">
                                 <div class="name">Fees (per person)</div>
@@ -67,7 +79,13 @@
                                 <div class="name">Available Seats</div>
                                 <div class="value">
                                     <div class="input-group">
-                                        <input class="input--style-5" type="number" value="<?php echo $c['member_limit']; ?>" disabled>
+
+                                        <?php if($total == "") { ?>
+                                            <input class="input--style-5" type="number" value="<?php echo $c['member_limit'];?>" disabled>
+                                        <?php  } else { ?>
+                                            <input class="input--style-5" type="number" value="<?php echo $total ?>" disabled>
+                                        <?php  } ?>
+                                        
                                     </div>
                                 </div>
                         </div>
