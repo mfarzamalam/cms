@@ -99,7 +99,7 @@
                                 <form method="POST" action="bookingSearch.php">
                                     <div class="input-group">
                                         <label class="label">Select date</label>
-                                        <input class="is1" type="date" name="date">
+                                        <input class="is1" type="date" name="date" required>
                                         <i class="zmdi zmdi-pin input-group-symbol"></i>
                                     </div>
                                     <div class="input-group">

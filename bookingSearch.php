@@ -32,7 +32,6 @@
         
         }
 	}
-
 ?>
 
 <!DOCTYPE html>
@@ -78,7 +77,7 @@
 										<td class="cell100 "><?php echo $loop['club_code']; ?></td>
 										<td class="cell100 "><?php echo $loop['ground_owner']; ?></td>
 										<td class="cell100 "><?php echo $loop['available']; ?></td>
-										<td><a href="bookingRegister.php?id=<?php echo $loop['ground_code']; ?>"><button class="btn btn--radius-2 btn--red">Register</button></a></td>                          
+										<td><a href="bookingRegister.php?id=<?php echo $loop['ground_code']?>&date=<?php echo $date?>"><button class="btn btn--radius-2 btn--red">Register</button></a></td>                          
 									</tr>
 
 								</tbody>
