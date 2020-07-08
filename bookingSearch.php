@@ -4,7 +4,7 @@
         $range = $_POST['range'];
         $Day = $_POST['Day'];
         $Night = $_POST['Night'];
-       echo $date = $_POST['date'];
+       	$date = $_POST['date'];
 
         if($Day == "Day" && $Night == "Night"){
 

@@ -64,6 +64,7 @@
                         <input type="hidden" name="membercode" value="<?php echo $_SESSION['member_code']?>">
                         <input type="hidden" name="fees" value="<?php echo $c['fees']?>">
                         <input type="hidden" name="Aseats" value="<?php echo $c['member_limit']?>">
+                        <input type="hidden" name="Rseats" value="1">
                     
 
                         <div class="form-row">
@@ -91,22 +92,29 @@
                         </div>
 
                         <div class="form-row">
-                                <div class="name">Register Your Seats (upto 10)</div>
+                                <div class="name">Your Seat</div>
                                 <div class="value">
                                     <div class="input-group">
-                                        <input class="input--style-5" type="number" name="Rseats" min="1" max="10" required>
+                                        <input class="input--style-5" type="number" value="1" disabled>
                                     </div>
                                 </div>
                         </div>
 
                         <div class="form-row">
-                                <div class="name">Total</div>
-                                <div class="value">
-                                    <div class="input-group">
-                                        <input class="input--style-5" type="number" name="total">
-                                    </div>
+                        <div class="name">Payment mode</div>
+                        <div class="value">
+                            <div class="input-group">
+                                <div class="rs-select2 js-select-simple select--no-search">
+                                    <select name="payment" required>
+                                        <option disabled="disabled" value="" selected>Choose option</option>
+                                        <option value="Easy Paisa">Easy Paisa</option>
+                                        <option value="Jaaz Cash">Jaaz Cash</option>
+                                    </select>
+                                    <div class="select-dropdown"></div>
                                 </div>
+                            </div>
                         </div>
+                    </div>
 
                                 <?php if(isset($_GET['error'])) { ?>
                                     <label style="color: red;" class="label label--block"> <?php echo $_GET['error'] ?></label>

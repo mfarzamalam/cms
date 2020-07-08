@@ -5,15 +5,15 @@
     if(isset($_POST['register'])){
         $batchcode=$_POST['batchcode'];
         $membercode=$_POST['membercode'];
-        $feesWant=$_POST['fees'];
-        $feesgiven=$_POST['total'];
+        $RegisterFees=$_POST['fees'];
+        $payment=$_POST['payment'];
         $Aseats=$_POST['Aseats'];
         $Rseats=$_POST['Rseats'];
         $confirm = "We will update you when payment is completed";
     
-        $query = "INSERT INTO training_register (`batch_code`, `member_code`, `fees_pp`, `fees_given`, 
-                                                `available_seats`, `register_seats`, `confirmation`) 
-                                        VALUES ('$batchcode','$membercode','$feesWant','$feesgiven',
+        $query = "INSERT INTO `training_register`(`batch_code`, `member_code`, `fees_paid`, `payment_mode`, 
+                                                `available_seats`, `register_seats`, `confirmation`)
+                                        VALUES ('$batchcode','$membercode','$RegisterFees','$payment',
                                                 '$Aseats','$Rseats','$confirm')";
         $result = mysqli_query($conn,$query);
         
