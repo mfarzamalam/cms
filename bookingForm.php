@@ -16,11 +16,6 @@
 
     <?php include 'headerlink.php'; ?>
 
-
-    <link href="http://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
-    <link href="http://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js">
-      
-
     <!-- Main CSS-->
     <link href="css/gAdd.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
 
@@ -30,60 +25,8 @@
 
 <body>
 
-    <?php include 'header.php'; 
-
-
-//     if(isset($_GET['search'])){
-//         echo "<h1>$_GET[date]</h1>";
-//         echo "<h1>$_GET[range]</h1>";
-
-//     if($_GET['Day'] == "Day" && $_GET['Night'] == "Night"){
-        
-//         echo "<h1>Day and night</h1>";
-
-//     } 
-//     else if ($_GET['Day'] == "Day" && $_GET['Night'] == ""){
-                
-//         echo "<h1>Day</h1>";
-
-//     }
-//     else if ($_GET['Night'] == "Night" && $_GET['Day'] == ""){
-//         echo "<h1>Night</h1>";
-//     }
-// }
-
-    // while ($loop = mysqli_fetch_assoc($r)){
+    <?php include 'header.php'; ?>
     
-    
-    ?>
-<!-- 
-    <table border="1">
-        <tr>
-            <th>ground name </th>
-            <th>ground description </th>
-            <th>ground owner </th>
-            <th>ground owner number </th>
-            <th>ground rent day </th>
-            <th>ground rent night </th>
-            <th>ground day </th>
-            <th>ground night </th>
-            <th>ground available </th>
-        </tr>
-        <tr>
-            <td><?php echo $loop['ground_name']; ?></td>
-            <td><?php echo $loop['ground_des']; ?></td>
-            <td><?php echo $loop['ground_owner']; ?></td>
-            <td><?php echo $loop['ground_owner_num']; ?></td>
-            <td><?php echo $loop['rent_day']; ?></td>
-            <td><?php echo $loop['rent_night']; ?></td>
-            <td><?php echo $loop['Day']; ?></td>
-            <td><?php echo $loop['Night']; ?></td>
-            <td><?php echo $loop['available']; ?></td>
-        </tr>
-    </table> -->
-
- <!-- while loop tag close here -->
-
     <div class="styling">
         <div class="page-wrapper bg-img-1 p-t-165 p-b-100">
             <div class="wrapper wrapper--w720">
