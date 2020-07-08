@@ -19,8 +19,8 @@
                 $row2 = mysqli_fetch_assoc($result2);
     
                 $_SESSION['username'] = $username;
-                $_SESSION['club_name'] = $row2['club_name'];
                 $_SESSION['club_code'] = $row2['club_code'];
+                $_SESSION['club_name'] = $row2['club_name'];
     
                 header("location:index.php");
             } else {

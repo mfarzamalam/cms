@@ -37,7 +37,7 @@
 
                             <div class="form-group">
                                 <label for="memberjoindate"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="date" name="memberjoindate" id="memberjoindate" placeholder="Member joining date"/>
+                                <input type="text" name="memberjoindate" id="memberjoindate" placeholder="Member joining date" value="<?php echo Date("m/d/Y")?>"/>
                             </div>
 
                             <div class="form-group">
