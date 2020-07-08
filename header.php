@@ -15,6 +15,7 @@
                         <a href="LoginSelector.php" class="register_icon"><i class="ti-arrow-right"></i>LOGIN</a>
                         <?php } else {?>
                         <a href="logout.php" class="register_icon"><i class="ti-arrow-right"></i>LOGOUT</a>
+                        <a href="memberAccount.php" class="register_icon"><i class="ti-arrow-right"></i>MY ACCOUNT</a>
                         <?php }?>
                         <br/>
                         <br/>

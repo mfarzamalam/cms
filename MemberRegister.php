@@ -50,7 +50,7 @@
                 $result3 = mysqli_query($conn,$query3);
 
                 if($result && $result3){        // check both the queries perform well.
-                    header('location:MemberRegisterForm.php');
+                    header('location:MemberLoginForm.php?success=Successfully Registered');
                 }else {         // if not then else block will run                  
                     header('location:MemberRegisterForm.php?error=Failed to register');
                 }

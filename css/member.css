@@ -1,0 +1,40 @@
+.member input[type=text], select {
+    width: 50%;
+    padding: 22px 20px;
+    margin: 8px 70px;
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    box-sizing: border-box;
+  }
+  
+  .member  input[type=submit] {
+    width: 50%;
+    background-color: #4CAF50;
+    margin: 8px 70px;
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .member label {
+    margin: 8px 70px;
+  }
+  .member input[type=submit]:hover {
+   
+    background-color: #45a049;
+  }
+  
+  .member  div {
+    margin-left: 50%;
+    border-radius: 50px;
+    background-color: #f2f2f2;
+    padding: 20px;
+  }
+
+  h3 {
+    text-align: center;
+    font-size: 50px;
+  }
