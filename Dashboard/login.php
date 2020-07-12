@@ -1,3 +1,27 @@
+<?php include 'connection.php';
+
+  if(isset($_POST['signin'])){
+    $user = $_POST['username'];
+    $pass = $_POST['pass']; 
+
+    $q = "SELECT * FROM `admin` WHERE `username`='$user' AND `password`='$pass'";
+    $r = mysqli_query($conn,$q);
+  
+    $row = mysqli_num_rows($r);
+  
+    if($row == 1){
+
+      $row1 = mysqli_fetch_assoc($r);
+      $_SESSION['admin'] = $row1['username'];
+      $_SESSION['name'] = $row1['name'];
+
+      header('location:index.php');
+    }else{
+      header('location:login.php?error=Failed to sign in');
+    }  
+  }
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,52 +59,28 @@
       *********************************************************************************************************************************************************** -->
   <div id="login-page">
     <div class="container">
-      <form class="form-login" action="index.php">
+      <form class="form-login" action="" method="POST">
         <h2 class="form-login-heading">sign in now</h2>
         <div class="login-wrap">
-          <input type="text" class="form-control" placeholder="User ID" autofocus>
+          <input type="text" name="username" class="form-control" placeholder="Username" autofocus>
           <br>
-          <input type="password" class="form-control" placeholder="Password">
-          <label class="checkbox">
-            <input type="checkbox" value="remember-me"> Remember me
-            <span class="pull-right">
-            <a data-toggle="modal" href="login.html#myModal"> Forgot Password?</a>
-            </span>
-            </label>
-          <button class="btn btn-theme btn-block" href="index.php" type="submit"><i class="fa fa-lock"></i> SIGN IN</button>
-          <hr>
+          <input type="password" name="pass" class="form-control" placeholder="Password">
+          <br>
+          <button class="btn btn-theme btn-block" name="signin" type="submit"><i class="fa fa-lock"></i> SIGN IN</button>
           <div class="login-social-link centered">
-            <p>or you can sign in via your social network</p>
-            <button class="btn btn-facebook" type="submit"><i class="fa fa-facebook"></i> Facebook</button>
-            <button class="btn btn-twitter" type="submit"><i class="fa fa-twitter"></i> Twitter</button>
+            <?php if(isset($_GET['error'])) {?>
+              <h5 style="color: red; text-transform:uppercase;"> <?php echo $_GET['error']; ?></h5>
+            <?php } ?>
+            <!-- <button class="btn btn-facebook" type="submit"><i class="fa fa-facebook"></i> Facebook</button> -->
+            <!-- <button class="btn btn-twitter" type="submit"><i class="fa fa-twitter"></i> Twitter</button> -->
           </div>
-          <div class="registration">
+          <!-- <div class="registration">
             Don't have an account yet?<br/>
             <a class="" href="#">
               Create an account
               </a>
-          </div>
+          </div> -->
         </div>
-        <!-- Modal -->
-        <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Forgot Password ?</h4>
-              </div>
-              <div class="modal-body">
-                <p>Enter your e-mail address below to reset your password.</p>
-                <input type="text" name="email" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix">
-              </div>
-              <div class="modal-footer">
-                <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
-                <button class="btn btn-theme" type="button">Submit</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- modal -->
       </form>
     </div>
   </div>

@@ -1,5 +1,9 @@
 <?php include 'connection.php'; 
 
+   if(!isset($_SESSION['admin'])){
+        header('location:login.php');
+    }
+
   $q = "SELECT * FROM `register_club`";
   $r = mysqli_query($conn,$q);
 
@@ -84,10 +88,19 @@
           <div class="col-md-12">
             <div class="content-panel">
               <table class="table table-striped table-advance table-hover">
-                <h4><i class="fa fa-angle-right"></i> Member Registration Table</h4>
+                <h4><i class="fa fa-angle-right"></i> Members</h4>
                 <hr>
                 <thead>
                   <tr>
+
+                  <?php 
+
+                      $q = "SELECT * FROM `register_member`";
+                      $r = mysqli_query($conn,$q);
+
+                      
+
+                  ?>
                     <th><i class="fa fa-bullhorn"></i> Company</th>
                     <th class="hidden-phone"><i class="fa fa-question-circle"></i> Descrition</th>
                     <th><i class="fa fa-bookmark"></i> Profit</th>

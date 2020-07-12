@@ -12,7 +12,7 @@
     die( 'Unable to load the PHP Mail Form Library!');
   }
 
-  $contactform = new PHP_Mail_Form;
+  // $contactform = new PHP_Mail_Form;
   $contactform->ajax = true;
 
   // Replace with your real receiving email address

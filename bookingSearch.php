@@ -1,10 +1,18 @@
 <?php include 'connection.php'; 
 
-    if(isset($_POST['search'])){        
-        $range = $_POST['range'];
-        $Day = $_POST['Day'];
-        $Night = $_POST['Night'];
-       	$date = $_POST['date'];
+    if(isset($_POST['search'])){   
+		$Day="";
+		$Night="";     
+		$range = $_POST['range'];
+			if(isset($_POST['Day'])){
+        		$Day = $_POST['Day'];
+			}
+
+			if(isset($_POST['Night'])){
+				$Night = $_POST['Night'];
+			}
+		   
+		$date = $_POST['date'];
 
         if($Day == "Day" && $Night == "Night"){
 
@@ -16,7 +24,7 @@
                                             AND `Night` BETWEEN 1000 AND '$range'";
 			$r = mysqli_query($conn,$q);
 			
-
+ 
         } 
         else if ($Day == "Day" && $Night == ""){
             $q = "SELECT * FROM `grounds` WHERE `rent_day` LIKE 'Yes' 
@@ -40,7 +48,7 @@
 <html lang="en">
 <head>
 
-	<title>Table V04 <?php echo	$c = mysqli_num_rows($r); ?></title>
+	<title>Table V04 </title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <?php include 'headerlink.php'; ?>
@@ -76,7 +84,6 @@
 						$q1 = "SELECT * FROM `ground_booking` WHERE `ground_code` = '$loop[ground_code]'  AND `booking_date`='$date'";
 						$r1 = mysqli_query($conn,$q1);
 						$gr = mysqli_num_rows($r1);
-						// echo $gb;
 					
 						?>
 

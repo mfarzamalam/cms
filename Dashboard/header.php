@@ -1,4 +1,3 @@
-   
    <!--header start-->
     <header class="header black-bg">
       <div class="sidebar-toggle-box">
@@ -26,7 +25,7 @@
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
           <p class="centered"><a href="profile.php"><img src="img/ui-sam.jpg" class="img-circle" width="80"></a></p>
-          <h5 class="centered">Sam Soffes</h5>
+          <h5 class="centered" style="text-transform: capitalize;"><?php echo $_SESSION['name']; ?></h5>
           <li class="mt">
             <a class="active" href="index.php">
               <i class="fa fa-dashboard"></i>
