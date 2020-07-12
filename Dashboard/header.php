@@ -25,7 +25,7 @@
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
           <p class="centered"><a href="profile.php"><img src="img/ui-sam.jpg" class="img-circle" width="80"></a></p>
-          <h5 class="centered" style="text-transform: capitalize;"><?php echo $_SESSION['name']; ?></h5>
+          <!-- <h5 class="centered" style="text-transform: capitalize;"><?php echo $_SESSION['name']; ?></h5> -->
           <li class="mt">
             <a class="active" href="index.php">
               <i class="fa fa-dashboard"></i>
@@ -41,6 +41,8 @@
               </a>
             <ul class="sub">
               <li><a href="clubinfo.php">Club info</a></li>
+              <li><a href="clubGround.php">Ground</a></li>
+              <li><a href="clubBatch.php">Batches</a></li>
             </ul>
           </li>
 
@@ -51,7 +53,9 @@
               <span>Members</span>
               </a>
             <ul class="sub">
-              <li><a href="">Extra</a></li>
+              <li><a href="memberinfo.php">Member info</a></li>
+              <li><a href="groundBooking.php">Ground Booking</a></li>
+              <li><a href="batchRegistration.php">Batch Registration</a></li>
             </ul>
           </li>
 

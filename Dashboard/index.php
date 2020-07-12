@@ -49,7 +49,6 @@
 
     <section id="main-content">
       <section class="wrapper">
-        <h3><i class="fa fa-angle-right"></i> Clubs</h3>
         <div class="row">
           <!-- /col-md-12 -->
           <div class="col-md-12 mt">
@@ -62,6 +61,8 @@
                     <th>#</th>
                     <th> Club name</th>
                     <th>Date registered</th>
+                    <th>Grounds</th>
+                    <th>Batches</th>
                     <th>Club president</th>
                     <th>Club secretary</th>
                   </tr>
@@ -73,6 +74,25 @@
                     <td><?php $num = 0; echo $num +1;?></td>
                     <td><a href="clubinfo.php?id=<?php echo $list['club_code']?>"><?php echo $list['club_name']?></a></td>
                     <td><?php echo $list['club_built_year']?></td>
+                   
+                      <?php  // CLUB GROUNDS
+
+                        $q1 = "SELECT * FROM `grounds` WHERE `club_code`='$list[club_code]'";
+                        $r1 = mysqli_query($conn,$q1);
+                        $count = mysqli_num_rows($r1);
+                      ?>
+
+                    <td><?php echo $count; ?></td>
+
+                      <?php   // CLUB BATCHES
+
+                        $q1 = "SELECT * FROM `training_batch` WHERE `club_code`='$list[club_code]'";
+                        $r1 = mysqli_query($conn,$q1);
+                        $count = mysqli_num_rows($r1);
+                      ?>
+
+                    <td><?php echo $count; ?></td>
+                    
                     <td><?php echo $list['club_president']?></td>
                     <td><?php echo $list['club_secretary']?></td>
                   </tr>
@@ -88,7 +108,7 @@
           <div class="col-md-12">
             <div class="content-panel">
               <table class="table table-striped table-advance table-hover">
-                <h4><i class="fa fa-angle-right"></i> Members</h4>
+                <h4><i class="fa fa-angle-right"></i> Members Details</h4>
                 <hr>
                 <thead>
                   <tr>
@@ -97,87 +117,49 @@
 
                       $q = "SELECT * FROM `register_member`";
                       $r = mysqli_query($conn,$q);
-
-                      
-
                   ?>
-                    <th><i class="fa fa-bullhorn"></i> Company</th>
-                    <th class="hidden-phone"><i class="fa fa-question-circle"></i> Descrition</th>
-                    <th><i class="fa fa-bookmark"></i> Profit</th>
-                    <th><i class=" fa fa-edit"></i> Status</th>
-                    <th></th>
+                    <th> Member Name</th>
+                    <th> Joining Date</th>
+                    <th> Contact</th>
+                    <th> Additional Contact</th>
+                    <th> CNIC </th>
+                    <th> Address</th>
+                    <th> Ground Booking</th>
+                    <th> Batch Registration</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>
-                      <a href="basic_table.html#">Company Ltd</a>
-                    </td>
-                    <td class="hidden-phone">Lorem Ipsum dolor</td>
-                    <td>12000.00$ </td>
-                    <td><span class="label label-info label-mini">Due</span></td>
-                    <td>
-                      <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <a href="basic_table.html#">
-                        Dashio co
-                        </a>
-                    </td>
-                    <td class="hidden-phone">Lorem Ipsum dolor</td>
-                    <td>17900.00$ </td>
-                    <td><span class="label label-warning label-mini">Due</span></td>
-                    <td>
-                      <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <a href="basic_table.html#">
-                        Another Co
-                        </a>
-                    </td>
-                    <td class="hidden-phone">Lorem Ipsum dolor</td>
-                    <td>14400.00$ </td>
-                    <td><span class="label label-success label-mini">Paid</span></td>
-                    <td>
-                      <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <a href="basic_table.html#">Dashio ext</a>
-                    </td>
-                    <td class="hidden-phone">Lorem Ipsum dolor</td>
-                    <td>22000.50$ </td>
-                    <td><span class="label label-success label-mini">Paid</span></td>
-                    <td>
-                      <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <a href="basic_table.html#">Total Ltd</a>
-                    </td>
-                    <td class="hidden-phone">Lorem Ipsum dolor</td>
-                    <td>12120.00$ </td>
-                    <td><span class="label label-warning label-mini">Due</span></td>
-                    <td>
-                      <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                    </td>
-                  </tr>
+
+                  <?php while ($row = mysqli_fetch_assoc($r)){ ?>
+                    <tr>
+                      <td> <a href="memberinfo.php?id=<?php echo $row['member_code']; ?>"> <?php echo $row['member_name']; ?></a></td>
+                      <td><?php echo $row['joining_date']; ?></td>
+                      <td><?php echo $row['member_cont1']; ?></td>
+                      <td><?php echo $row['member_cont2']; ?></td>
+                      <td><?php echo $row['member_cnic']; ?></td>
+                      <td><?php echo $row['member_address']; ?></td>
+
+                      <?php   // MEMBER GROUND BOOKING 
+
+                        $q1 = "SELECT * FROM `ground_booking` WHERE `member_code`='$row[member_code]'";
+                        $r1 = mysqli_query($conn,$q1);
+                        $count = mysqli_num_rows($r1);
+                      ?>
+
+                      <td> <?php echo $count; ?> </a></td>
+                      
+                      
+                      <?php // MEMBER TRAINING REGISTRATION
+
+                        $q2 = "SELECT * FROM `training_register` WHERE `member_code`='$row[member_code]'";
+                        $r2 = mysqli_query($conn,$q2);
+                        $count = mysqli_num_rows($r2);
+                      ?>
+
+                      <td><?php echo $count; ?></td>
+
+                    </tr>
+                  <?php } ?>
                 </tbody>
               </table>
             </div>
@@ -188,8 +170,6 @@
         <!-- /row -->
       </section>
     </section>
-
-
   </section>
   <!-- js placed at the end of the document so the pages load faster -->
   <script src="lib/jquery/jquery.min.js"></script>
