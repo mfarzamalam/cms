@@ -52,7 +52,7 @@
 
                             <div class="form-group">
                                 <label for="clubpresidentnum"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="clubpresidentnum" id="clubpresidentnum" placeholder="Club President Number"/>
+                                <input type="number" name="clubpresidentnum" id="clubpresidentnum" placeholder="Club President Number"/>
                             </div>
 
                             <div class="form-group">
@@ -67,7 +67,7 @@
 
                             <div class="form-group">
                                 <label for="clubsecretarynum"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="clubsecretarynum" id="clubsecretarynum" placeholder="Club Secretary Number"/>
+                                <input type="number" name="clubsecretarynum" id="clubsecretarynum" placeholder="Club Secretary Number"/>
                             </div>
 
                             <div class="form-group">

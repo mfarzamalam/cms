@@ -1,5 +1,5 @@
 <?php include 'connection.php'; 
-        $q = "SELECT * FROM `grounds`";
+        $q = "SELECT * FROM `grounds` WHERE `club_code`='$_SESSION[club_code]'";
         $r = mysqli_query($conn,$q);
 ?>
 
@@ -102,23 +102,24 @@
                                 </div>
                             </div>
                             
-                            
-                            <!-- <div class="form-row">
-                                <div class="name">Subject</div>
+                            <div class="form-row">
+                                <div class="name">Ground Day Rent</div>
                                 <div class="value">
                                     <div class="input-group">
-                                        <div class="rs-select2 js-select-simple select--no-search">
-                                            <select name="subject">
-                                                <option disabled="disabled" selected="selected">Choose option</option>
-                                                <option>Subject 1</option>
-                                                <option>Subject 2</option>
-                                                <option>Subject 3</option>
-                                            </select>
-                                            <div class="select-dropdown"></div>
-                                        </div>
+                                        <input class="input--style-5" type="number" name="DayRent" value="<?php echo $res['Day']; ?>">
                                     </div>
                                 </div>
-                            </div> -->
+                            </div>
+
+                            <div class="form-row">
+                                <div class="name">Ground Night Rent</div>
+                                <div class="value">
+                                    <div class="input-group">
+                                        <input class="input--style-5" type="number" name="NightRent" value="<?php echo $res['Night']; ?>">
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="form-row p-t-20">
                                 <label class="label label--block">Your ground is ready for booking?</label>
                                 <div class="p-t-15">

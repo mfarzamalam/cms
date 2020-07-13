@@ -45,23 +45,28 @@
                                                     '$clubmanagement','$clubrelation')";
             $result = mysqli_query($conn,$query);
 
-            // get the last record in register table using desc order from club code
 
-            $query2 = "SELECT * FROM `register_club` ORDER BY `club_code` DESC";
-            $result2 = mysqli_query($conn,$query2);
-            $row = mysqli_fetch_assoc($result2);
-                $cc = $row['club_code'];    // put that code in a seprate variable
+            if($result){
+                // get the last record in register table using desc order from club code
 
-                // add that club code in signin club table
-
-                $query3 = "INSERT INTO signin_club (`club_code`,`username`,`password`) VALUES ('$cc','$username','$pass')";
-                $result3 = mysqli_query($conn,$query3);
-
-                if($result && $result3){        // check both the queries perform well.
-                    header('location:ClubLoginForm.php');
-                }else {         // if not then else block will run                  
-                    header('location:ClubRegisterForm.php?error=Failed to register');
-                }
-        
+                $query2 = "SELECT * FROM `register_club` ORDER BY `club_code` DESC";
+                $result2 = mysqli_query($conn,$query2);
+                $row = mysqli_fetch_assoc($result2);
+                    $cc = $row['club_code'];    // put that code in a seprate variable
+    
+                    // add that club code in signin club table
+    
+                    $query3 = "INSERT INTO signin_club (`club_code`,`username`,`password`) VALUES ('$cc','$username','$pass')";
+                    $result3 = mysqli_query($conn,$query3);
+    
+                    if($result && $result3){        // check both the queries perform well.
+                        header('location:ClubLoginForm.php');
+                    }else {         // if not then else block will run                  
+                        header('location:ClubRegisterForm.php?error=Failed to register');
+                    }    
+            } else {
+                header('location:ClubRegisterForm.php?error=Failed to register');
+            }
+            
     }
 ?>

@@ -29,9 +29,12 @@
             }
             
         $available=$_POST['RadioSelect'];
+       
+        $DayRent=$_POST['DayRent'];
+        $NightRent=$_POST['NightRent'];
 
-        $query = "INSERT INTO grounds (`ground_name`,`ground_des`,`club_code`,`ground_owner`,`ground_owner_num`,`rent_day`,`rent_night`,`available`)
-                         VALUES      ('$groundname','$grounddes','$clubcode','$groundowner','$grondownernumber','$Day','$Night','$available')";
+        $query = "INSERT INTO grounds (`ground_name`,`ground_des`,`club_code`,`ground_owner`,`ground_owner_num`,`rent_day`,`rent_night`,`Day`,`Night`,`available`)
+                         VALUES      ('$groundname','$grounddes','$clubcode','$groundowner','$grondownernumber','$Day','$Night','$DayRent','$NightRent','$available')";
 
         $result = mysqli_query($conn,$query);
         

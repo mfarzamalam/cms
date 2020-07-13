@@ -1,5 +1,5 @@
 <?php include 'connection.php'; 
-        $q = "SELECT * FROM `training_batch`";
+        $q = "SELECT * FROM `training_batch` WHERE `club_code`='$_SESSION[club_code]'";
         $r = mysqli_query($conn,$q);
 ?>
 
