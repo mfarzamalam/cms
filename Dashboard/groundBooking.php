@@ -1,5 +1,9 @@
 <?php include 'connection.php'; 
 
+  if(!isset($_SESSION['admin'])){
+        header('location:login.php');
+    }
+    
     $q = "SELECT * FROM `ground_booking`";
     $r = mysqli_query($conn,$q);
 

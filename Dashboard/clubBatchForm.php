@@ -2,16 +2,16 @@
 
      if(!isset($_SESSION['admin'])){
         header('location:login.php');
-      }
+    }
 
-    if(isset($_GET['id'])){
-        $id = $_GET['id'];
-        $q = "SELECT * FROM `register_member` WHERE `member_code`='$id'";
+    if(isset($_GET['batchcode'])){
+        $batchcode = $_GET['batchcode'];
+        $q = "SELECT * FROM `training_batch` WHERE `batch_code`='$batchcode'";
         $r = mysqli_query($conn,$q);
 
         $val = mysqli_fetch_assoc($r);
     }else {
-        header('location:index.php?error=Please select a member');
+        header('location:clubBatch.php?error=Please select a batch to edit');
     }
 ?>
 
@@ -58,54 +58,76 @@
         <!-- /row -->
         <div class="row mt">
           <div class="col-lg-12">
-            <h4 style="text-transform: uppercase; font-size:40px; color:red;"><i class="fa fa-angle-right"> <?php echo $val['member_name'] ?>  </i></h4>
             <div class="form-panel">
               <div class="form">
-                <form class="cmxform form-horizontal style-form" id="signupForm" method="POST" action="memberinfoEdit&Del.php">
+                <form class="cmxform form-horizontal style-form" id="signupForm" method="POST" action="clubbatchEdit&Delete.php">
                   <div class="form-group ">
-                    <label for="member_name" class="control-label col-lg-2">Name</label>
+                    <label for="batchname" class="control-label col-lg-2">Batch Name</label>
                     <div class="col-lg-10">
-                      <input class=" form-control" id="member_name" name="member_name" type="text" value="<?php echo $val['member_name'] ?>" />
+                      <input class=" form-control" id="batchname" name="batchname" type="text" value="<?php echo $val['batch_name'] ?>" />
+                    </div>
+                  </div>
+
+
+                  <div class="form-group ">
+                    <label for="batchdes" class="control-label col-lg-2">Batch Description</label>
+                    <div class="col-lg-10">
+                      <input class=" form-control" id="batchdes" name="batchdes" type="text" value="<?php echo $val['batch_des'] ?>" />
                     </div>
                   </div>
                 
                   <div class="form-group ">
-                    <label for="joining_date" class="control-label col-lg-2">Joining Date</label>
+                    <label for="sdate" class="control-label col-lg-2">Start Date</label>
                     <div class="col-lg-10">
-                      <input class="form-control " id="joining_date" name="joining_date" type="date" value="<?php echo $val['joining_date'] ?>" />
+                      <input class="form-control " id="sdate" name="sdate" type="date" value="<?php echo $val['start_date'] ?>" />
+                    </div>
+                  </div>
+
+                  <div class="form-group ">
+                    <label for="edate" class="control-label col-lg-2">End Date</label>
+                    <div class="col-lg-10">
+                      <input class="form-control " id="edate" name="edate" type="date" value="<?php echo $val['end_date'] ?>" />
                     </div>
                   </div>
               
                   <div class="form-group ">
-                    <label for="member_cont1" class="control-label col-lg-2">Contact</label>
+                    <label for="mlimit" class="control-label col-lg-2">Member Limit</label>
                     <div class="col-lg-10">
-                      <input class="form-control " id="member_cont1" name="member_cont1" type="number" value="<?php echo $val['member_cont1'] ?>" />
+                      <input class="form-control " id="mlimit" name="mlimit" type="number" value="<?php echo $val['member_limit'] ?>" />
                     </div>
                   </div>
                  
                   <div class="form-group ">
-                    <label for="member_cont2" class="control-label col-lg-2">Additional Contact (Optional)</label>
+                    <label for="ecr" class="control-label col-lg-2">Eligibility Criteria</label>
                     <div class="col-lg-10">
-                      <input class="form-control " id="member_cont2" name="member_cont2" type="number" value="<?php echo $val['member_cont2'] ?>" />
+                      <input class="form-control " id="ecr" name="ecr" type="text" value="<?php echo $val['eligible_criteria'] ?>" />
                     </div>
                   </div>
 
                   <div class="form-group ">
-                    <label for="member_cnic" class="control-label col-lg-2">CNIC Number</label>
+                    <label for="fees" class="control-label col-lg-2">Fees</label>
                     <div class="col-lg-10">
-                      <input class="form-control " id="member_cnic" name="member_cnic" type="number" value="<?php echo $val['member_cnic'] ?>" />
+                      <input class="form-control " id="fees" name="fees" type="number" value="<?php echo $val['fees'] ?>" />
                     </div>
                   </div>
 
                   <div class="form-group ">
-                    <label for="member_address" class="control-label col-lg-2">Address</label>
+                    <label for="cname1" class="control-label col-lg-2">Coach Name</label>
                     <div class="col-lg-10">
-                      <input class="form-control " id="member_address" name="member_address" type="text" value="<?php echo $val['member_address'] ?>" />
+                      <input class="form-control " id="cname1" name="cname1" type="text" value="<?php echo $val['coach_name'] ?>" />
+                    </div>
+                  </div>
+
+                  <div class="form-group ">
+                    <label for="cname2" class="control-label col-lg-2">Second Coach Name</label>
+                    <div class="col-lg-10">
+                      <input class="form-control " id="cname2" name="cname2" type="text" value="<?php echo $val['coach_name2'] ?>" />
                     </div>
                   </div>
 
 
-                  <input type="hidden" name="id" value="<?php echo $id?>">
+                  <input type="hidden" name="batchcode" value="<?php echo $batchcode?>">
+                  <input type="hidden" name="clubcode" value="<?php echo $val['club_code']?>">
                   
                   <!-- <div class="form-group ">
                     <label for="agree" class="control-label col-lg-2 col-sm-3">Agree to Our Policy</label>

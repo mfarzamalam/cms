@@ -42,6 +42,8 @@
         }else {
             header('location:index.php?error=Unable to delete');
         }
+    } else {
+        header('location:index.php');
     }
 
 ?>

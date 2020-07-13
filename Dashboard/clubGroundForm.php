@@ -1,17 +1,17 @@
 <?php include 'connection.php'; 
 
-     if(!isset($_SESSION['admin'])){
+    if(!isset($_SESSION['admin'])){
         header('location:login.php');
-      }
-
-    if(isset($_GET['id'])){
-        $id = $_GET['id'];
-        $q = "SELECT * FROM `register_member` WHERE `member_code`='$id'";
+    }
+    
+    if(isset($_GET['ground_code'])){
+        $ground_code = $_GET['ground_code'];
+        $q = "SELECT * FROM `grounds` WHERE `ground_code`='$ground_code'";
         $r = mysqli_query($conn,$q);
 
         $val = mysqli_fetch_assoc($r);
     }else {
-        header('location:index.php?error=Please select a member');
+        header('location:clubGround.php?error=Please select a Ground to edit');
     }
 ?>
 
@@ -53,59 +53,80 @@
    <!--main content start-->
    <section id="main-content">
       <section class="wrapper">
-        <h3><i class="fa fa-angle-right"></i> Member Details</h3>
+        <h3><i class="fa fa-angle-right"></i> Ground Details</h3>
         
         <!-- /row -->
         <div class="row mt">
           <div class="col-lg-12">
-            <h4 style="text-transform: uppercase; font-size:40px; color:red;"><i class="fa fa-angle-right"> <?php echo $val['member_name'] ?>  </i></h4>
             <div class="form-panel">
               <div class="form">
-                <form class="cmxform form-horizontal style-form" id="signupForm" method="POST" action="memberinfoEdit&Del.php">
+                <form class="cmxform form-horizontal style-form" id="signupForm" method="POST" action="clubGroundEdit&Delete.php">
                   <div class="form-group ">
-                    <label for="member_name" class="control-label col-lg-2">Name</label>
+                    <label for="groundname" class="control-label col-lg-2">Ground Name</label>
                     <div class="col-lg-10">
-                      <input class=" form-control" id="member_name" name="member_name" type="text" value="<?php echo $val['member_name'] ?>" />
+                      <input class=" form-control" id="groundname" name="groundname" type="text" value="<?php echo $val['ground_name'] ?>" />
+                    </div>
+                  </div>
+
+
+                  <div class="form-group ">
+                    <label for="grounddes" class="control-label col-lg-2">Ground Description</label>
+                    <div class="col-lg-10">
+                      <input class=" form-control" id="grounddes" name="grounddes" type="text" value="<?php echo $val['ground_des'] ?>" />
                     </div>
                   </div>
                 
                   <div class="form-group ">
-                    <label for="joining_date" class="control-label col-lg-2">Joining Date</label>
+                    <label for="groundowner" class="control-label col-lg-2">Ground Owner</label>
                     <div class="col-lg-10">
-                      <input class="form-control " id="joining_date" name="joining_date" type="date" value="<?php echo $val['joining_date'] ?>" />
+                      <input class="form-control " id="groundowner" name="groundowner" type="text" value="<?php echo $val['ground_owner'] ?>" />
+                    </div>
+                  </div>
+
+                  <div class="form-group ">
+                    <label for="grondownernumber" class="control-label col-lg-2">Ground Owner Number</label>
+                    <div class="col-lg-10">
+                      <input class="form-control " id="grondownernumber" name="grondownernumber" type="number" value="<?php echo $val['ground_owner_num'] ?>" />
+                    </div>
+                  </div>
+
+                  <div class="form-group ">
+                    <label for="rent_day" class="control-label col-lg-2">Day</label>
+                    <div class="col-lg-10">
+                      <input class="form-control " id="rent_day" name="rent_day" type="text" value="<?php echo $val['rent_day'] ?>" />
                     </div>
                   </div>
               
                   <div class="form-group ">
-                    <label for="member_cont1" class="control-label col-lg-2">Contact</label>
+                    <label for="Day" class="control-label col-lg-2">Rent Day</label>
                     <div class="col-lg-10">
-                      <input class="form-control " id="member_cont1" name="member_cont1" type="number" value="<?php echo $val['member_cont1'] ?>" />
+                      <input class="form-control " id="Day" name="Day" type="number" value="<?php echo $val['Day'] ?>" />
                     </div>
                   </div>
                  
                   <div class="form-group ">
-                    <label for="member_cont2" class="control-label col-lg-2">Additional Contact (Optional)</label>
+                    <label for="rent_night" class="control-label col-lg-2">Night</label>
                     <div class="col-lg-10">
-                      <input class="form-control " id="member_cont2" name="member_cont2" type="number" value="<?php echo $val['member_cont2'] ?>" />
+                      <input class="form-control " id="rent_night" name="rent_night" type="text" value="<?php echo $val['rent_night'] ?>" />
                     </div>
                   </div>
 
                   <div class="form-group ">
-                    <label for="member_cnic" class="control-label col-lg-2">CNIC Number</label>
+                    <label for="Night" class="control-label col-lg-2">Rent Night</label>
                     <div class="col-lg-10">
-                      <input class="form-control " id="member_cnic" name="member_cnic" type="number" value="<?php echo $val['member_cnic'] ?>" />
+                      <input class="form-control " id="Night" name="Night" type="number" value="<?php echo $val['Night'] ?>" />
                     </div>
                   </div>
 
                   <div class="form-group ">
-                    <label for="member_address" class="control-label col-lg-2">Address</label>
+                    <label for="available" class="control-label col-lg-2">Availibility</label>
                     <div class="col-lg-10">
-                      <input class="form-control " id="member_address" name="member_address" type="text" value="<?php echo $val['member_address'] ?>" />
+                      <input class="form-control " id="available" name="available" type="text" value="<?php echo $val['available'] ?>" />
                     </div>
                   </div>
 
-
-                  <input type="hidden" name="id" value="<?php echo $id?>">
+                  <input type="hidden" name="groundcode" value="<?php echo $ground_code?>">
+                  <input type="hidden" name="club_code" value="<?php echo $val['club_code']?>">
                   
                   <!-- <div class="form-group ">
                     <label for="agree" class="control-label col-lg-2 col-sm-3">Agree to Our Policy</label>

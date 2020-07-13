@@ -18,7 +18,7 @@
   <meta name="description" content="">
   <meta name="author" content="Dashboard">
   <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-  <title>Dashio - Bootstrap Admin Template</title>
+  <title>ADMIN DASHBOARD</title>
 
   <!-- Favicons -->
   <link href="img/favicon.png" rel="icon">
