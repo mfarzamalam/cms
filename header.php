@@ -15,7 +15,6 @@
                         <a href="LoginSelector.php" class="register_icon"><i class="ti-arrow-right"></i>LOGIN</a>
                         <?php } else {?>
                         <a href="logout.php" class="register_icon"><i class="ti-arrow-right"></i>LOGOUT</a>
-                        <a href="memberAccount.php" class="register_icon"><i class="ti-arrow-right"></i>MY ACCOUNT</a>
                         <?php }?>
                         <br/>
                         <br/>
@@ -103,25 +102,53 @@
                                     </li>
                                 </ul>
                                 <div class="header_social_icon d-none d-lg-block">
-                                    <ul>
-                                        <li><a href="#"><i class="ti-facebook"></i></a></li>
-                                        <li>
-                                            <a href="#"> <i class="ti-twitter"></i></a>
-                                        </li>
-                                        <li><a href="#"><i class="ti-instagram"></i></a></li>
-                                        <li><a href="#"><i class="ti-skype"></i></a></li>
+                                    <ul>    
+                                        <?php if (isset($_SESSION['member_name'])) {?>
+                                            <li class="nav-item dropdown">
+                                                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        <i style="color: black;" class="fa fa-user-circle-o"> <?php echo $_SESSION['member_name']; ?></i> 
+                                                    </a>
+                                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                      <a href="memberAccount.php" class="register_icon"><i class="ti-arrow-right"></i> MY ACCOUNT</a>
+                                                      <br>
+                                                      <a href="memberTrainingInfo.php" class="register_icon"><i class="ti-arrow-right"></i> TRAINING INFO</a>
+                                                      <br>
+                                                      <a href="memberGroundInfo.php" class="register_icon"><i class="ti-arrow-right"></i> GROUND BOOKING</a>
+                                                </div>
+                                            </li>
+                                        <?php } else { ?>
+                                            <li><a href="#"><i class="ti-facebook"></i></a></li>
+                                            <li>
+                                                <a href="#"> <i class="ti-twitter"></i></a>
+                                            </li>
+                                            <li><a href="#"><i class="ti-instagram"></i></a></li>
+                                            <li><a href="#"><i class="ti-skype"></i></a></li>
+                                        <?php } ?>
+
                                     </ul>
                                 </div>
                             </div>
                         </nav>
                         <div class="header_social_icon d-block d-lg-none">
                             <ul>
-                                <li><a href="#"><i class="ti-facebook"></i></a></li>
-                                <li>
-                                    <a href="#"> <i class="ti-twitter"></i></a>
-                                </li>
-                                <li><a href="#"><i class="ti-instagram"></i></a></li>
-                                <li><a href="#"><i class="ti-skype"></i></a></li>
+                            <?php if (isset($_SESSION['member_name'])) {?>
+                                            <li class="nav-item dropdown">
+                                                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        <i style="color: black;" class="fa fa-user-circle-o"> <?php echo $_SESSION['member_name']; ?></i> 
+                                                    </a>
+                                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                      <a href="memberAccount.php" class="register_icon"><i class="ti-arrow-right"></i> MY ACCOUNT</a>
+                                                    <a class="dropdown-item" href="batchViewForm.php">View Batches</a>
+                                                </div>
+                                            </li>
+                                        <?php } else { ?>
+                                            <li><a href="#"><i class="ti-facebook"></i></a></li>
+                                            <li>
+                                                <a href="#"> <i class="ti-twitter"></i></a>
+                                            </li>
+                                            <li><a href="#"><i class="ti-instagram"></i></a></li>
+                                            <li><a href="#"><i class="ti-skype"></i></a></li>
+                                        <?php } ?>
                             </ul>
                         </div>
                     </div>

@@ -9,7 +9,7 @@
         $payment=$_POST['payment'];
         $Aseats=$_POST['Aseats'];
         $Rseats=$_POST['Rseats'];
-        $confirm = "We will update you when payment is completed";
+        $confirm = "Wait";
     
         $query = "INSERT INTO `training_register`(`batch_code`, `member_code`, `fees_paid`, `payment_mode`, 
                                                 `available_seats`, `register_seats`, `confirmation`)

@@ -23,10 +23,10 @@
         }
 
         $q = "INSERT INTO `ground_booking` (`ground_code`, `member_code`, `booking_date`, `Day`, 
-                                            `Night`, `payment_mode`, `payment_status`, `amount_paid`, 
-                                            `club_decision`) 
-                    VALUES                 ('$gc','$mc','$date','$Day','$Night','$payment','Pending',
-                                            '$total','Pending')";
+                                            `Night`, `payment_status`, `amount_paid`, 
+                                            `decision`) 
+                    VALUES                 ('$gc','$mc','$date','$Day','$Night','$payment',
+                                            '$total','Wait')";
 
         $r = mysqli_query($conn,$q);
 
