@@ -43,19 +43,16 @@ $resultbatch=mysqli_query($conn,$querybatch);
             </section>
             <div class="form-group row">
             <label for="inputState" class="col-sm-2 col-form-label">Batch</label>
-      <div class="col-sm-10">
-      <select id="daysid"  class="form-control">
-     <option value="" selected>Select Batch</option>
-                                        <?php
-        while($rowbatch=mysqli_fetch_array($resultbatch))
-        {
-        ?>
-            <option value=<?php echo $rowbatch['batch_code'];?>>
-         <?php echo $rowbatch['batch_name'];?>
-            </option>
-        <?php
-        }
-        ?>
+              <div class="col-sm-10">
+                    <select id="daysid"  class="form-control">
+                        <option value="" selected>Select Batch</option>
+                <?php  while($rowbatch=mysqli_fetch_array($resultbatch)){ ?>
+                
+                    <option value=<?php echo $rowbatch['batch_code'];?>>
+                        <?php echo $rowbatch['batch_name'];?>
+                    </option>
+                
+                <?php } ?>
                                          
                                         
       </select>
@@ -70,7 +67,6 @@ $resultbatch=mysqli_query($conn,$querybatch);
 <script>
 $(document).ready(function(){
   $("#daysid").change(function(){
-    alert("The text has been changed.");
     bi=$('#daysid').val();
    
     if(bi){
@@ -79,14 +75,11 @@ $(document).ready(function(){
         url:'batchfatch.php',
         data:'batchid='+bi,
         success:function(html){
-            alert(html);
             $('#fo').html(html);
-         //   $('#city').html('<option value="">Select state first</option>'); 
         }
     });
-            }
-
-  });
+}
+});
 });
 </script>
 </html>
