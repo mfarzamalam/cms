@@ -3,38 +3,40 @@
     include 'connection.php';
 
     if(isset($_POST['booking'])){
-       $gc=$_POST['gc'];
-       $mc=$_POST['mc'];
-       $date=$_POST['date'];
-      $total=$_POST['total'];
-      $payment=$_POST['payment'];
-      $Day = "No";
-      $Night = "No";
+      $gc=$_POST['gc'];
+     echo  $mc=$_POST['mc'];
+     echo  $date=$_POST['date'];
+     echo $total=$_POST['total'];
+     echo $payment=$_POST['payment'];
+     echo $Day = "No";
+     echo      $Night = "No";
+     echo  $dec = "Wait";
 
         if(empty($_POST['available1']) && empty($_POST['available2']) ){
             header('location:bookingForm.php?error=Please select atleast one timing');
         }            
         
         if(isset($_POST['available1'])){
-            $Day = "Yes";
+            echo       $Day = "Yes";
         }
         if(isset($_POST['available2'])){
-            $Night = "Yes";
+            echo    $Night = "Yes";
         }
 
-        $q = "INSERT INTO `ground_booking` (`ground_code`, `member_code`, `booking_date`, `Day`, 
-                                            `Night`, `payment_status`, `amount_paid`, 
-                                            `decision`) 
+
+        $q = "INSERT INTO `ground_booking`(`ground_code`, `member_code`, `booking_date`, `Day`, `Night`, `payment_mode`, `amount_paid`, `decision`) 
                     VALUES                 ('$gc','$mc','$date','$Day','$Night','$payment',
-                                            '$total','Wait')";
+                                            '$total','$dec')";
 
         $r = mysqli_query($conn,$q);
 
         if($r){
             header('location:bookingForm.php?success=Successfully Booked');
         }else{
-            header('location:bookingRegister.php?error=Failed to book');
+            header('location:bookingSearch.php?error=Failed to book');
         }
+    } else {
+        header('location:index.php');
     }
 
 ?>

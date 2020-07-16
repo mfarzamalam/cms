@@ -1,5 +1,9 @@
 <?php include 'connection.php'; 
 
+	if(!isset($_SESSION['member_code'])){
+        header('location:index.php');
+    }
+    
     if(isset($_POST['search'])){   
 		$Day="";
 		$Night="";     

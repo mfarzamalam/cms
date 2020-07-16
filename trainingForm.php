@@ -1,5 +1,9 @@
 <?php include 'connection.php'; 
 
+    if(!isset($_SESSION['member_code'])){
+        header('location:index.php');
+    }
+    
     $q = "SELECT * FROM training_batch";
     $qr = mysqli_query($conn,$q);
     
@@ -47,7 +51,7 @@
             $r = mysqli_query($conn,$s);
             $reg = mysqli_num_rows($r);
 
-            $displayQuery="SELECT * FROM `training_register` WHERE `member_code`='$_SESSION[member_code]' AND `batch_code`=$c[batch_code]";
+            $displayQuery="SELECT * FROM `training_register` WHERE `member_code`='$_SESSION[member_code]' AND `batch_code`='$c[batch_code]'";
             $displayResult=mysqli_query($conn,$displayQuery);
 
             $total = $c['member_limit'] - $reg;

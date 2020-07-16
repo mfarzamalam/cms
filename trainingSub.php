@@ -23,6 +23,8 @@
             header('location:trainingForm.php?error=Unable to registerd');
         }
     
+    } else {
+        header('location:index.php');
     }
 
 ?>
