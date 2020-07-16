@@ -13,6 +13,10 @@
 			}
 		   
 		$date = $_POST['date'];
+		
+		if(empty($Day) && empty($Night)){
+			header('location:bookingForm.php?error=Please Checked atleast one Checkbox');
+		}
 
         if($Day == "Day" && $Night == "Night"){
 

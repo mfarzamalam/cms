@@ -27,8 +27,12 @@
 
     <?php include 'header.php'; ?>
     
+
     <div class="styling">
         <div class="page-wrapper bg-img-1 p-t-165 p-b-100">
+            <?php if(isset($_GET['error'])){?>
+                <div style="text-align: center; font-size:20px; text-transform:uppercase; color:red"><?php echo $_GET['error']?></div>
+            <?php } ?>
             <div class="wrapper wrapper--w720">
                 <div class="card card-3">
                     <div class="card-body">
