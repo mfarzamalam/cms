@@ -96,11 +96,11 @@
                     <td><?php echo $row['Night']; ?></td>   
                     <td><?php echo $row['payment_mode']; ?></td>   
                     <td><?php echo $row['amount_paid']; ?></td>
-                    <?php if($row['payment_status'] == "Pending") {?>
+                    <?php if($row['decision'] == "Wait") {?>
                         <td><span class="label label-info label-mini">Due</span></td>
                     <?php }  ?>
 
-                    <?php if($row['payment_status'] == "Paid") {?>
+                    <?php if($row['decision'] == "Confirmed") {?>
                         <td><span class="label label-success label-mini">Paid</span></td>
                     <?php }  ?>
                     

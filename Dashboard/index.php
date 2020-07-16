@@ -6,7 +6,7 @@
 
   $q = "SELECT * FROM `register_club`";
   $r = mysqli_query($conn,$q);
-
+  $num = 0;
 ?>
 
 <!DOCTYPE html>
@@ -71,7 +71,7 @@
 
                 <?php while ($list = mysqli_fetch_assoc($r)) { ?>
                   <tr>
-                    <td><?php $num = 0; echo $num +1;?></td>
+                    <td><?php echo $num += 1;?></td>
                     <td><a href="clubinfo.php?id=<?php echo $list['club_code']?>"><?php echo $list['club_name']?></a></td>
                     <td><?php echo $list['club_built_year']?></td>
                    
@@ -117,7 +117,9 @@
 
                       $q = "SELECT * FROM `register_member`";
                       $r = mysqli_query($conn,$q);
+                      $num = 0;
                   ?>
+                    <th>#</th>
                     <th> Member Name</th>
                     <th> Joining Date</th>
                     <th> Contact</th>
@@ -132,6 +134,7 @@
 
                   <?php while ($row = mysqli_fetch_assoc($r)){ ?>
                     <tr>
+                      <td><?php echo $num += 1;?></td>
                       <td> <a href="memberinfo.php?id=<?php echo $row['member_code']; ?>"> <?php echo $row['member_name']; ?></a></td>
                       <td><?php echo $row['joining_date']; ?></td>
                       <td><?php echo $row['member_cont1']; ?></td>
