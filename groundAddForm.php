@@ -26,7 +26,7 @@
                     <div class="col-lg-12">
                         <div class="breadcrumb_iner">
                             <div class="breadcrumb_iner_item">
-                                <h1>Your Ground</h1>
+                                <h1>Add Ground</h1>
                                 <p>Home<span>/</span>Players</p>
                             </div>
                         </div>
@@ -80,7 +80,7 @@
                                 <div class="name">Ground Owner Number</div>
                                 <div class="value">
                                     <div class="input-group">
-                                        <input class="input--style-5" type="text" name="grondownernumber">
+                                        <input class="input--style-5" type="number" name="grondownernumber">
                                     </div>
                                 </div>
                             </div>

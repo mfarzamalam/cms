@@ -17,3 +17,13 @@ Recent notices can be seen on the start page as they are posted by the admin.
 
 ### Admin Login: 
 Admin can approve and disapprove various ground booking requests, may check various members of the club and also people registered for various batches.
+
+
+
+## Error
+
+
+min max date in all forms
+On Edit batch redirect on Add 
+club registration
+club edit not working

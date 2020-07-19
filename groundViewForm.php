@@ -1,6 +1,7 @@
 <?php include 'connection.php'; 
-        $q = "SELECT * FROM `grounds` WHERE `club_code`='$_SESSION[club_code]'";
+        $q = "SELECT * FROM `grounds` WHERE `club_code`='$_SESSION[club_code]' AND `status`='ON' ORDER BY `ground_code` DESC";
         $r = mysqli_query($conn,$q);
+
 ?>
 
 <!doctype html>
@@ -38,7 +39,6 @@
                 </div>
             </section>
         <!--::breadcrumb part end::-->
-
     <?php while($res = mysqli_fetch_assoc($r)) { ?>
 
         <form method="POST" action="groundEdit&Delete.php" class="page-wrapper p-t-45 p-b-50">
@@ -138,7 +138,7 @@
                                     <label style="color: red;" class="label label--block"> <?php echo $_GET['error'] ?></label>
                                 <?php } ?>
                                 <button class="btn btn--radius-2 btn--red" name="Edit" type="submit">Edit</button>
-                                <button class="btn btn--radius-2 btn--red" name="Delete" type="submit">Delete</button>
+                                <button class="btn btn--radius-2 btn--red" name="Delete" type="submit" onclick=' return checkdel()'>Delete</button>
                             </div>
                         </form>
                         
@@ -151,6 +151,12 @@
                                 <?php } ?>
 
   
+    <script>
+        function checkdel(){
+            return confirm('Are you sure you want to delete ?');
+        }
+    
+    </script>
 </body>
 
 </html>

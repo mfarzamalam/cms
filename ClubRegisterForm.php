@@ -31,68 +31,48 @@
                         <h2 class="form-title">Sign up as a Club</h2>
                         <form method="POST" action="ClubRegister.php" class="register-form" id="register-form">
                             <div class="form-group">
-                                <label for="clubname"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="clubname" id="clubname" placeholder="Club name"/>
+                                <label for="clubname"></i></label>Club Name : 
+                                <input type="text" name="clubname" id="clubname"/>
                             </div>
 
                             <div class="form-group">
-                                <label for="clubdes"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="clubdes" id="clubdes" placeholder="Club Description"/>
+                                <label for="clubdes"></i></label>Description : 
+                                <input type="text" name="clubdes" id="clubdes"/>
                             </div>
 
                             <div class="form-group">
-                                <label for="clubuiltyear"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="date" name="clubuiltyear" id="clubuiltyear" placeholder="Club Built year"/>
+                                <label for="clubpresident"></i></label>President : 
+                                <input type="text" name="clubpresident" id="clubpresident"/>
                             </div>
 
                             <div class="form-group">
-                                <label for="clubpresident"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="clubpresident" id="clubpresident" placeholder="Club President"/>
+                                <label for="clubpresidentnum"></i></label>President Number : 
+                                <input type="number" name="clubpresidentnum" id="clubpresidentnum"/>
                             </div>
 
                             <div class="form-group">
-                                <label for="clubpresidentnum"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="number" name="clubpresidentnum" id="clubpresidentnum" placeholder="Club President Number"/>
+                                <label for="clubsecretary"></i></label>Secretary : 
+                                <input type="text" name="clubsecretary" id="clubsecretary"/>
                             </div>
 
                             <div class="form-group">
-                                <label for="clubVicePresident"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="clubVicePresident" id="clubVicePresident" placeholder="Club Vice President"/>
+                                <label for="clubsecretarynum"></i></label>Secretary Number : 
+                                <input type="number" name="clubsecretarynum" id="clubsecretarynum"/>
                             </div>
 
                             <div class="form-group">
-                                <label for="clubsecretary"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="clubsecretary" id="clubsecretary" placeholder="Club Secretary"/>
+                                <label for="clubrelation"></i></label>Who are you to club ?
+                                <input type="text" name="clubrelation" id="clubrelation" placeholder="Secretary/President/Owner"/>
                             </div>
 
                             <div class="form-group">
-                                <label for="clubsecretarynum"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="number" name="clubsecretarynum" id="clubsecretarynum" placeholder="Club Secretary Number"/>
+                                <label for="username"></i></label>Email : 
+                                <input type="email" name="username" id="username"/>
                             </div>
 
                             <div class="form-group">
-                                <label for="clubtreasurer"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="clubtreasurer" id="clubtreasurer" placeholder="Club Treasurer"/>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="clubmanagement"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="clubmanagement" id="clubmanagement" placeholder="Club Management"/>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="clubrelation"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="clubrelation" id="clubrelation" placeholder="Your relation with club"/>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="username"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="username" id="username" placeholder="Enter your username"/>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="pass"><i class="zmdi zmdi-lock"></i></label>
-                                <input type="password" name="pass" id="pass" placeholder="Your Password"/>
+                                <label for="pass"></i></label>Password : 
+                                <input type="password" name="pass" id="pass"/>
                             </div>
 
                             <div class="form-group">

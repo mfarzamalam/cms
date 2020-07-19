@@ -1,23 +1,28 @@
 <?php
     include 'connection.php';
 
+    $date = Date("Y-m-d");
+
     if(isset($_POST['signupclub'])){
         $clubname=$_POST['clubname'];
         $clubdes=$_POST['clubdes'];
-        $clubuiltyear=$_POST['clubuiltyear'];
         $clubpresident=$_POST['clubpresident'];
         $clubpresidentnum=$_POST['clubpresidentnum'];
-        $clubVicePresident=$_POST['clubVicePresident'];
         $clubsecretary=$_POST['clubsecretary'];
         $clubsecretarynum=$_POST['clubsecretarynum'];
-        $clubtreasurer=$_POST['clubtreasurer'];
-        $clubmanagement=$_POST['clubmanagement'];
-        $clubrelation=$_POST['clubrelation'];
         $username=$_POST['username'];
         $pass=$_POST['pass'];
 
-            if(empty($clubname) || empty($clubpresident) || empty($clubpresidentnum) || empty($clubsecretary) || empty($clubsecretarynum) || empty($username)){
+            if(empty($clubname) || empty($clubpresident) || empty($clubpresidentnum) || empty($clubsecretary) || empty($clubsecretarynum) || empty($username) || empty($pass)){
                 header('location:ClubRegisterForm.php?error=Please fill all the textboxes');
+                exit();
+            }
+
+            if($_POST['clubrelation'] == "Secretary" || $_POST['clubrelation'] == "secretary" || $_POST['clubrelation'] == "President"
+                 || $_POST['clubrelation'] == "president" || $_POST['clubrelation'] == "Owner" || $_POST['clubrelation'] == "owner" ){
+                    $clubrelation = $_POST['clubrelation'];
+            }else {
+                header('location:ClubRegisterForm.php?error=Please state correct relation with club');
                 exit();
             }
 
@@ -35,14 +40,10 @@
             }
 
             // if username is unique then registration continue
-            $query = "INSERT INTO register_club (`club_name`,`club_des`,`club_built_year`,
-                                                    `club_president`,`club_president_num`,`club_vice_president`,
-                                                    `club_secretary`,`club_secretary_num`,`club_treasurer`,
-                                                    `club_management`,`relation_with_club`)
-                                            VALUES ('$clubname','$clubdes','$clubuiltyear',
-                                                    '$clubpresident','$clubpresidentnum','$clubVicePresident',
-                                                    '$clubsecretary','$clubsecretarynum','$clubtreasurer',
-                                                    '$clubmanagement','$clubrelation')";
+            $query = "INSERT INTO `register_club`(`club_name`, `club_des`, `joining_date`, `club_president`, 
+                                                `club_president_num`, `club_secretary`, `club_secretary_num`, `relation_with_club`) 
+                            VALUES               ('$clubname','$clubdes','$date','$clubpresident',
+                                                  '$clubpresidentnum','$clubsecretary','$clubsecretarynum','$clubrelation')";
             $result = mysqli_query($conn,$query);
 
 
@@ -55,8 +56,8 @@
                     $cc = $row['club_code'];    // put that code in a seprate variable
     
                     // add that club code in signin club table
-    
-                    $query3 = "INSERT INTO signin_club (`club_code`,`username`,`password`) VALUES ('$cc','$username','$pass')";
+                    $status = "ON";
+                    $query3 = "INSERT INTO signin_club (`club_code`,`username`,`password`,`status`) VALUES ('$cc','$username','$pass','$status')";
                     $result3 = mysqli_query($conn,$query3);
     
                     if($result && $result3){        // check both the queries perform well.
@@ -66,7 +67,6 @@
                     }    
             } else {
                 header('location:ClubRegisterForm.php?error=Failed to register');
-            }
-            
+            }          
     }
 ?>

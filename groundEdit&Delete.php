@@ -49,15 +49,37 @@
     }else if (isset($_POST['Delete'])){
         
         $groundcode=$_POST['groundcode'];
+
+        $q1 = "SELECT * FROM `ground_booking` WHERE `ground_code`='$groundcode'";
+        $r1 = mysqli_query($conn,$q1);
+        $num = mysqli_num_rows($r1);
         
-        $q = "DELETE FROM `grounds` WHERE `ground_code`='$groundcode'";
+        if($num > 0){
+            $row = mysqli_fetch_assoc($r1);
+            $book_date = $row['booking_date'];
+            $current_date = Date("Y-m-d");
 
-        $r = mysqli_query($conn,$q);
-
-        if($r){
-            header('location:groundAddForm.php');
+            if($current_date <= $book_date){
+                header('location:groundViewForm.php?error=You cannot delete it. some has already booked your ground for coming days');
+            }else {
+                $q = "UPDATE `grounds` SET `available`='No', `status`='OFF' WHERE `ground_code`='$groundcode'";
+                $r = mysqli_query($conn,$q);
+        
+                if($r){
+                    header('location:groundViewForm.php');
+                }else {
+                    header('location:groundViewForm.php?error=Cannot turn it OFF');
+                }
+            }
         }else {
-            header('location:groundAddForm.php');
+            $q = "DELETE FROM `grounds` WHERE `ground_code`='$groundcode'";
+            $r = mysqli_query($conn,$q);
+    
+            if($r){
+                header('location:groundViewForm.php');
+            }else {
+                header('location:groundViewForm.php?error=Unable to Delete');
+            }    
         }
     }
 

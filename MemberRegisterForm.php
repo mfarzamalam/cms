@@ -31,43 +31,38 @@
                         <h2 class="form-title">Sign up as Member</h2>
                         <form method="POST" action="MemberRegister.php" class="register-form" id="register-form">
                             <div class="form-group">
-                                <label for="membername"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="membername" id="membername" placeholder="Member name"/>
+                                <label for="membername"></label>Name :
+                                <input type="text" name="membername" id="membername"/>
                             </div>
 
                             <div class="form-group">
-                                <label for="memberjoindate"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="memberjoindate" id="memberjoindate" placeholder="Member joining date" value="<?php echo Date("m/d/Y")?>"/>
+                                <label for="membercontact1"></label>Contact : 
+                                <input type="number" name="membercontact1" id="membercontact1"/>
                             </div>
 
                             <div class="form-group">
-                                <label for="membercontact1"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="membercontact1" id="membercontact1" placeholder="Member Contact"/>
+                                <label for="membercontact2"></label>Contact (additional) :
+                                <input type="number" name="membercontact2" id="membercontact2"/>
                             </div>
 
                             <div class="form-group">
-                                <label for="membercontact2"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="membercontact2" id="membercontact2" placeholder="Additional Number (Optional)"/>
+                                <label for="membercnic"></label>CNIC :
+                                <input type="number" name="membercnic" id="membercnic"/>
                             </div>
 
                             <div class="form-group">
-                                <label for="membercnic"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="membercnic" id="membercnic" placeholder="Your CNIC number"/>
+                                <label for="address"></label>Address :
+                                <input type="text" name="address" id="address"/>
                             </div>
 
                             <div class="form-group">
-                                <label for="address"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="address" id="address" placeholder="Member Address"/>
+                                <label for="username"></label>Username :
+                                <input type="email" name="username" id="username"/>
                             </div>
 
                             <div class="form-group">
-                                <label for="username"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="username" id="username" placeholder="Enter your username"/>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="pass"><i class="zmdi zmdi-lock"></i></label>
-                                <input type="password" name="pass" id="pass" placeholder="Your Password"/>
+                                <label for="pass"></label>Password :
+                                <input type="password" name="pass" id="pass"/>
                             </div>
 
                             <div class="form-group">

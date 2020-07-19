@@ -32,9 +32,10 @@
        
         $DayRent=$_POST['DayRent'];
         $NightRent=$_POST['NightRent'];
-
-        $query = "INSERT INTO grounds (`ground_name`,`ground_des`,`club_code`,`ground_owner`,`ground_owner_num`,`rent_day`,`rent_night`,`Day`,`Night`,`available`)
-                         VALUES      ('$groundname','$grounddes','$clubcode','$groundowner','$grondownernumber','$Day','$Night','$DayRent','$NightRent','$available')";
+        $status = "ON";
+        
+        $query = "INSERT INTO grounds (`ground_name`,`ground_des`,`club_code`,`ground_owner`,`ground_owner_num`,`rent_day`,`rent_night`,`Day`,`Night`,`available`,`status`)
+                         VALUES      ('$groundname','$grounddes','$clubcode','$groundowner','$grondownernumber','$Day','$Night','$DayRent','$NightRent','$available','$status')";
 
         $result = mysqli_query($conn,$query);
         

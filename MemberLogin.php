@@ -21,7 +21,10 @@
                 $_SESSION['username'] = $username;
                 $_SESSION['member_code'] = $row2['member_code'];
                 $_SESSION['member_name'] = $row2['member_name'];
-    
+                
+                $q = "UPDATE `signin_member` SET `status`='ON' WHERE `member_code`='$row[member_code]'";
+                $r = mysqli_query($conn,$q);
+
                 header("location:index.php");
             } else {
                 header("location:MemberLoginForm.php?error=Login Failed");

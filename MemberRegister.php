@@ -1,9 +1,10 @@
 <?php
     include 'connection.php';
 
+    $date = Date("Y-m-d");
+
     if(isset($_POST['signupmember'])){
         $membername=$_POST['membername'];
-        $memberjoindate=$_POST['memberjoindate'];
         $membercontact1=$_POST['membercontact1'];
         $membercontact2=$_POST['membercontact2'];
         $membercnic=$_POST['membercnic'];
@@ -33,7 +34,7 @@
             
             $query = "INSERT INTO register_member (`member_name`,`joining_date`,`member_cont1`,
                                                     `member_cont2`,`member_cnic`,`member_address`)
-                                            VALUES ('$membername','$memberjoindate','$membercontact1',
+                                            VALUES ('$membername','$date','$membercontact1',
                                                     '$membercontact2','$membercnic','$address')";
             $result = mysqli_query($conn,$query);
 
@@ -44,9 +45,10 @@
             $row = mysqli_fetch_assoc($result2);
                 $cc = $row['member_code'];    // put that code in a seprate variable
 
+            if ($result){
                 // add that club code in signin club table
-
-                $query3 = "INSERT INTO signin_member (`member_code`,`username`,`password`) VALUES ('$cc','$username','$pass')";
+                $status = "ON";
+                $query3 = "INSERT INTO signin_member (`member_code`,`username`,`password`,`status`) VALUES ('$cc','$username','$pass','$status')";
                 $result3 = mysqli_query($conn,$query3);
 
                 if($result && $result3){        // check both the queries perform well.
@@ -54,6 +56,8 @@
                 }else {         // if not then else block will run                  
                     header('location:MemberRegisterForm.php?error=Failed to register');
                 }
-        
+            } else {
+                header('location:MemberRegisterForm.php?error=Failed to register');
+            }
     }
 ?>
