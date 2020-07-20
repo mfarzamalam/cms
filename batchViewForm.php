@@ -1,5 +1,10 @@
 <?php include 'connection.php'; 
-        $q = "SELECT * FROM `training_batch` WHERE `club_code`='$_SESSION[club_code]'";
+        
+        if(!isset($_SESSION['club_code'])){
+            header('location:ClubLoginForm.php');
+        }
+     
+        $q = "SELECT * FROM `training_batch` WHERE `club_code`='$_SESSION[club_code]' AND `status`='ACTIVE' ORDER BY `batch_code` DESC";
         $r = mysqli_query($conn,$q);
 ?>
 
@@ -17,6 +22,13 @@
         <!-- Main CSS-->
         <link href="css/gAdd.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
 
+        <style> 
+            .card-5 .card-heading {
+                background-color: green;
+            }
+        
+        </style>
+
    </head>
 <body>
 
@@ -29,7 +41,7 @@
                     <div class="col-lg-12">
                         <div class="breadcrumb_iner">
                             <div class="breadcrumb_iner_item">
-                                <h1>View Batch</h1>
+                                <h1>All Batches</h1>
                                 <p>Home<span>/</span>Players</p>
                             </div>
                         </div>
@@ -45,7 +57,7 @@
             <div class="wrapper wrapper--w790">
                     <div class="card card-5">
                         <div class="card-heading">
-                            <h2 class="title">View Your Batches</h2>
+                            <h2 class="title"><?php echo $res['batch_name']?></h2>
                         </div>
                         <div class="card-body">
                             <form method="POST">
@@ -141,7 +153,7 @@
                                         <label style="color: red;" class="label label--block"> <?php echo $_GET['error'] ?></label>
                                     <?php } ?>
                                     <button class="btn btn--radius-2 btn--red" name="Edit" type="submit">Edit</button>
-                                    <button class="btn btn--radius-2 btn--red" name="Delete" type="submit">Delete</button>
+                                    <button class="btn btn--radius-2 btn--red" name="Delete" type="submit" onclick='return checkdel()'>Delete</button>
                                 </div>
                             </form>
                         </div>
@@ -151,7 +163,12 @@
 
                                 <?php } ?>
 
-  
+  <script>
+        function checkdel(){
+            return confirm('Are you sure you want to delete ?');
+        }
+    
+    </script>
 </body>
 
 </html>

@@ -13,7 +13,7 @@
         $fees=$_POST['fees'];
         $cname1=$_POST['cname1'];
         $cname2=$_POST['cname2'];
-
+        $status="ACTIVE";
         if(empty($batchname) || empty($sdate) || empty($edate) || empty($mlimit) || empty($fees) || empty($cname1)) {
             header('location:batchAddForm.php?error=Please fill all the textboxes');
             exit();
@@ -21,17 +21,17 @@
 
          $query = "INSERT INTO training_batch (`batch_name`, `batch_des`, `club_code`, 
                                                 `start_date`, `end_date`, `member_limit`, `eligible_criteria`, 
-                                                `fees`, `coach_name`, `coach_name2`) 
+                                                `fees`, `coach_name`, `coach_name2`, `status`) 
                                         VALUES ('$batchname','$batchdes','$clubcode',
                                                 '$sdate','$edate','$mlimit','$ecr',
-                                                '$fees','$cname1','$cname2')";
+                                                '$fees','$cname1','$cname2','$status')";
         
         $result = mysqli_query($conn,$query);
         
         if($result){
             header('location:batchViewForm.php');
         }else {
-            header('location:batchAddForm.php?error=Unable to submit');
+            header('location:batchAddForm.php?error=Unable to ADD new batch');
         }
     }
 ?>

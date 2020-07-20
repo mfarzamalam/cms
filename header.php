@@ -44,10 +44,6 @@
         
                     <?php if(isset($_SESSION['club_name'])) { ?>
 
-                                    <li class="nav-item">
-                                        <a href="team.php" class="nav-link">team</a>
-                                    </li>
-
                                     <li class="nav-item dropdown">
                                         <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             Ground
@@ -69,9 +65,7 @@
                                         </div>
                                     </li>
 
-                                    <li class="nav-item">
-                                        <a href="gallery.php" class="nav-link">gallery</a>
-                                    </li>
+                                   
 
                         <?php } else if (isset($_SESSION['member_name'])) { ?>
 
@@ -94,9 +88,9 @@
                                         </div>
                                     </li> -->
                                     
-                                    <li class="nav-item">
+                                    <!-- <li class="nav-item">
                                         <a href="blog.php" class="nav-link">blog</a>
-                                    </li>
+                                    </li> -->
                                     <li class="nav-item">
                                         <a href="contact.php" class="nav-link">Contact</a>
                                     </li>

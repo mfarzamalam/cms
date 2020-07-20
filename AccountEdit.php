@@ -22,7 +22,7 @@
                                         WHERE `member_code`='$_SESSION[member_code]'";
         $r = mysqli_query($conn,$q);
         
-        $q1 = "UPDATE `signin_member` SET `username`='$user',`password`='$pass' WHERE `member_code`='$_SESSION[member_code]'";
+        $q1 = "UPDATE `signin_member` SET `username`='$user',`password`='$pass',`status`='ON' WHERE `member_code`='$_SESSION[member_code]'";
         $r1 = mysqli_query($conn,$q1);
 
         if($r && $r1){

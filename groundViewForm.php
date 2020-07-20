@@ -1,4 +1,9 @@
 <?php include 'connection.php'; 
+       
+       if(!isset($_SESSION['club_code'])){
+        header('location:ClubLoginForm.php');
+        }
+           
         $q = "SELECT * FROM `grounds` WHERE `club_code`='$_SESSION[club_code]' AND `status`='ON' ORDER BY `ground_code` DESC";
         $r = mysqli_query($conn,$q);
 
@@ -18,6 +23,12 @@
         <!-- Main CSS-->
         <link href="css/gAdd.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
 
+        <style> 
+            .card-5 .card-heading {
+                background-color: red;
+            }
+        
+        </style>
    </head>
 <body>
 
@@ -45,7 +56,7 @@
             <div class="wrapper wrapper--w790">
                 <div class="card card-5">
                     <div class="card-heading">
-                        <h2 class="title">Your ground</h2>
+                        <h2 class="title"><?php echo $res['ground_name'] ?></h2>
                     </div>
                     <div class="card-body">
                         <form method="POST">

@@ -1,4 +1,14 @@
-<?php include 'connection.php'; ?>
+<?php include 'connection.php'; 
+
+      if(!isset($_SESSION['club_code'])){
+            header('location:ClubLoginForm.php');
+        }
+
+        $today = Date("Y-m-d");
+        $date=date_create($today);
+        date_add($date,date_interval_create_from_date_string("30 days"));
+        $next30Days = date_format($date,"Y-m-d");
+?>
 
 <!doctype html>
 <html lang="en">
@@ -32,7 +42,7 @@
                     <div class="col-lg-12">
                         <div class="breadcrumb_iner">
                             <div class="breadcrumb_iner_item">
-                                <h1>Your Batches</h1>
+                                <h1>Start New Batch</h1>
                                 <p>Home<span>/</span>Players</p>
                             </div>
                         </div>
@@ -78,7 +88,7 @@
                                 <div class="name">Registration Start Date</div>
                                 <div class="value">
                                     <div class="input-group">
-                                        <input class="input--style-5" type="date" name="sdate">
+                                        <input class="input--style-5" type="date" name="sdate" min="<?php echo $today?>" max="<?php echo $next30Days?>" >
                                     </div>
                                 </div>
                             </div>
@@ -87,7 +97,7 @@
                                 <div class="name">Registration End Date</div>
                                 <div class="value">
                                     <div class="input-group">
-                                        <input class="input--style-5" type="date" name="edate">
+                                        <input class="input--style-5" type="date" name="edate" min="<?php echo $today?>" max="<?php echo $next30Days?>">
                                     </div>
                                 </div>
                             </div>

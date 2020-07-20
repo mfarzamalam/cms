@@ -1,4 +1,9 @@
-<?php include 'connection.php'; ?>
+<?php include 'connection.php'; 
+
+     if(!isset($_SESSION['club_code'])){
+            header('location:ClubLoginForm.php');
+        }
+?>
 
 <!doctype html>
 <html lang="en">
@@ -13,6 +18,13 @@
 
         <!-- Main CSS-->
         <link href="css/gAdd.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
+
+        <style> 
+            .card-5 .card-heading {
+                background-color: red;
+            }
+        
+        </style>
 
    </head>
 <body>
