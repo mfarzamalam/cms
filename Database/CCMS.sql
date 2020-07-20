@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 16, 2020 at 09:50 AM
+-- Generation Time: Jul 20, 2020 at 01:20 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.6
 
@@ -58,22 +58,21 @@ CREATE TABLE `grounds` (
   `rent_night` varchar(5) DEFAULT NULL,
   `Day` int(11) NOT NULL,
   `Night` int(11) NOT NULL,
-  `available` varchar(10) NOT NULL
+  `available` varchar(10) NOT NULL,
+  `status` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `grounds`
 --
 
-INSERT INTO `grounds` (`ground_code`, `ground_name`, `ground_des`, `club_code`, `ground_owner`, `ground_owner_num`, `rent_day`, `rent_night`, `Day`, `Night`, `available`) VALUES
-(17, 'second', 'asdasdasd', 68, 'asdasdas', '878978789', 'No', 'Yes', 2000, 5000, 'Yes'),
-(18, 'Third', 'asdasdasd', 68, 'asdasdas', '878978789', 'Yes', 'No', 8000, 1500, 'Yes'),
-(19, 'fourth', 'asdasdasd', 68, 'asdasdas', '878978789', 'Yes', 'Yes', 3000, 8000, 'Yes'),
-(20, 'fifth', 'asdasdasd', 68, 'asdasdas', '878978789', 'Yes', 'Yes', 3000, 8000, 'No'),
-(21, 'Sixth', 'asdasdasd', 68, 'asdasdas', '878978789', 'Yes', 'Yes', 3000, 10000, 'Yes'),
-(22, 'seventh', 'asdasdasd', 68, 'asdasdas', '878978789', 'No', 'Yes', 3000, 8000, 'No'),
-(23, 'first', 'asdasd', 68, 'asdasd', '654464', 'Yes', 'Yes', 4500, 6500, 'Yes'),
-(24, 'Eighteen', 'This is the bestest ground in malir cantt', 70, 'Asghar', '03322667306', 'Yes', 'Yes', 1000, 4000, 'Yes');
+INSERT INTO `grounds` (`ground_code`, `ground_name`, `ground_des`, `club_code`, `ground_owner`, `ground_owner_num`, `rent_day`, `rent_night`, `Day`, `Night`, `available`, `status`) VALUES
+(19, 'fourth', 'asdasdasd', 68, 'asdasdas', '878978789', 'Yes', 'Yes', 3000, 8000, 'No', 'OFF'),
+(21, 'Sixth', 'asdasdasd', 68, 'asdasdas', '878978789', 'Yes', 'Yes', 3000, 10000, 'No', 'OFF'),
+(23, 'first', 'asdasd', 68, 'asdasd', '654464', 'Yes', 'Yes', 4500, 6500, 'No', 'OFF'),
+(24, 'Eighteen', 'This is the bestest ground in malir cantt', 70, 'Asghar', '03322667306', 'Yes', 'Yes', 1000, 6000, 'Yes', 'OFF'),
+(25, 'Twenty', 'tweny ground description', 71, 'Khizar', '56456464654', 'Yes', 'No', 1500, 5000, 'Yes', 'ON'),
+(26, 'Ground Demo', 'ground description', 71, 'Asghar', '03322667306', 'Yes', 'Yes', 2500, 4000, 'No', 'OFF');
 
 -- --------------------------------------------------------
 
@@ -98,12 +97,14 @@ CREATE TABLE `ground_booking` (
 --
 
 INSERT INTO `ground_booking` (`id`, `ground_code`, `member_code`, `booking_date`, `Day`, `Night`, `payment_mode`, `amount_paid`, `decision`) VALUES
-(10, 23, 11, '2020-07-20', 'Yes', 'No', 'Jaaz Cash', 4500, 'Wait'),
-(12, 19, 11, '2020-07-21', 'Yes', 'Yes', 'Jaaz Cash', 11000, 'Wait'),
-(13, 21, 11, '2020-07-21', 'No', 'Yes', 'Easy Paisa', 10000, 'Wait'),
-(14, 21, 11, '2020-07-22', 'Yes', 'No', 'Easy Paisa', 3000, 'Wait'),
+(10, 23, 11, '2020-07-19', 'Yes', 'No', 'Jaaz Cash', 4500, 'Confirmed'),
+(12, 19, 11, '2020-07-21', 'Yes', 'Yes', 'Jaaz Cash', 11000, 'Confirmed'),
+(13, 21, 11, '2020-07-21', 'No', 'Yes', 'Easy Paisa', 10000, 'Confirmed'),
+(14, 21, 11, '2020-07-22', 'Yes', 'No', 'Easy Paisa', 3000, 'Confirmed'),
 (15, 19, 11, '2020-07-22', 'Yes', 'Yes', 'Jaaz Cash', 11000, 'Confirmed'),
-(17, 24, 12, '2020-07-23', 'Yes', 'No', 'Jaaz Cash', 1000, 'Wait');
+(17, 24, 12, '2020-07-23', 'Yes', 'No', 'Jaaz Cash', 1000, 'Confirmed'),
+(20, 24, 11, '2020-07-17', 'No', 'Yes', 'Jaaz Cash', 4000, 'Confirmed'),
+(21, 26, 11, '2020-07-18', 'Yes', 'No', 'Easy Paisa', 2500, 'Confirmed');
 
 -- --------------------------------------------------------
 
@@ -134,14 +135,11 @@ CREATE TABLE `register_club` (
   `club_code` int(11) NOT NULL,
   `club_name` varchar(150) NOT NULL,
   `club_des` varchar(250) NOT NULL,
-  `club_built_year` date NOT NULL,
+  `joining_date` date NOT NULL,
   `club_president` varchar(50) NOT NULL,
   `club_president_num` varchar(150) NOT NULL,
-  `club_vice_president` varchar(50) NOT NULL,
   `club_secretary` varchar(50) NOT NULL,
   `club_secretary_num` varchar(150) NOT NULL,
-  `club_treasurer` varchar(50) NOT NULL,
-  `club_management` varchar(50) NOT NULL,
   `relation_with_club` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -149,10 +147,11 @@ CREATE TABLE `register_club` (
 -- Dumping data for table `register_club`
 --
 
-INSERT INTO `register_club` (`club_code`, `club_name`, `club_des`, `club_built_year`, `club_president`, `club_president_num`, `club_vice_president`, `club_secretary`, `club_secretary_num`, `club_treasurer`, `club_management`, `relation_with_club`) VALUES
-(68, 'narcosta', 'Club is very good in nature. it will not harm you', '2020-06-08', 'ali', '900078610', 'aslam', 'saleena', '555451181', 'basit', 'basit', 'secretary'),
-(69, 'Archilie', 'very long in size', '2020-07-23', 'Shafeeq', '0321289655', 'Asghar', 'Shahrukh', '02135584866', 'Nadeem', 'Mushtaq', 'secretary'),
-(70, 'usama', 'usama club description', '2020-07-22', 'basit', '5644564646546', 'alam', 'saleena', '489446434354', 'ateeq', 'gomez', 'Manager');
+INSERT INTO `register_club` (`club_code`, `club_name`, `club_des`, `joining_date`, `club_president`, `club_president_num`, `club_secretary`, `club_secretary_num`, `relation_with_club`) VALUES
+(68, 'narcosta', 'Club is very good in nature. it will not harm you', '2020-06-08', 'ali', '900078610', 'saleena', '555451168', 'Owner'),
+(69, 'Archilie', 'very long in size', '2020-07-23', 'Shafeeq', '0321289655', 'Shahrukh', '02135584866', 'secretary'),
+(70, 'GOT', 'usama club description', '2020-07-22', 'basit', '5644564646546', 'saleena', '489446434354', 'President'),
+(71, 'North', 'North club description', '2020-07-30', 'B', '45464654564', 'asdasd', '6546454', 'secretary');
 
 -- --------------------------------------------------------
 
@@ -175,7 +174,7 @@ CREATE TABLE `register_member` (
 --
 
 INSERT INTO `register_member` (`member_code`, `member_name`, `joining_date`, `member_cont1`, `member_cont2`, `member_cnic`, `member_address`) VALUES
-(11, 'Ali', '2020-12-31', '0354645464', '', '4255101151', 'block 8 avenue'),
+(11, 'Ali', '2020-12-31', '0354645469', '12222112', '425510115143', 'block 8 avenue'),
 (12, 'Usama', '2020-07-24', '090078601', '4522202115', '4210112378666', 'shalimaar bhaag / 6th floor /Apartment');
 
 -- --------------------------------------------------------
@@ -187,17 +186,19 @@ INSERT INTO `register_member` (`member_code`, `member_name`, `joining_date`, `me
 CREATE TABLE `signin_club` (
   `club_code` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
-  `password` varchar(100) NOT NULL
+  `password` varchar(100) NOT NULL,
+  `status` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `signin_club`
 --
 
-INSERT INTO `signin_club` (`club_code`, `username`, `password`) VALUES
-(68, 'b', 'b'),
-(69, 'club', 'club'),
-(70, 'man', 'man');
+INSERT INTO `signin_club` (`club_code`, `username`, `password`, `status`) VALUES
+(68, 'b', 'b', 'OFF'),
+(69, 'club', 'club', 'ON'),
+(70, 'man', 'man', 'ON'),
+(71, 'north', 'north', 'ON');
 
 -- --------------------------------------------------------
 
@@ -208,16 +209,17 @@ INSERT INTO `signin_club` (`club_code`, `username`, `password`) VALUES
 CREATE TABLE `signin_member` (
   `member_code` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
-  `password` varchar(100) NOT NULL
+  `password` varchar(100) NOT NULL,
+  `status` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `signin_member`
 --
 
-INSERT INTO `signin_member` (`member_code`, `username`, `password`) VALUES
-(11, 'ali', 'ali'),
-(12, 'usama', 'usama');
+INSERT INTO `signin_member` (`member_code`, `username`, `password`, `status`) VALUES
+(11, 'ali', 'ali', 'ON'),
+(12, 'usama', 'usama', 'ON');
 
 -- --------------------------------------------------------
 
@@ -236,17 +238,19 @@ CREATE TABLE `training_batch` (
   `eligible_criteria` varchar(150) DEFAULT NULL,
   `fees` int(7) NOT NULL,
   `coach_name` varchar(100) NOT NULL,
-  `coach_name2` varchar(150) DEFAULT NULL
+  `coach_name2` varchar(150) DEFAULT NULL,
+  `status` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `training_batch`
 --
 
-INSERT INTO `training_batch` (`batch_code`, `batch_name`, `batch_des`, `club_code`, `start_date`, `end_date`, `member_limit`, `eligible_criteria`, `fees`, `coach_name`, `coach_name2`) VALUES
-(1, 'winter camp', 'a', 68, '2020-06-27', '2020-06-30', 40, 'a', 6300, 'Akmal', 'shabbir'),
-(2, 'summer camp', 'Boys lets get this thing going', 68, '2020-06-27', '2020-06-30', 38, 'b', 63430, 'bakmal', 'shakmal'),
-(3, 'Cold camp', 'This camp can pissed ya off', 70, '2020-07-15', '2020-07-16', 15, 'Anyone with 2 legs', 5000, 'Sallo bhai', '');
+INSERT INTO `training_batch` (`batch_code`, `batch_name`, `batch_des`, `club_code`, `start_date`, `end_date`, `member_limit`, `eligible_criteria`, `fees`, `coach_name`, `coach_name2`, `status`) VALUES
+(1, 'winter camp', 'abcd', 68, '2020-06-27', '2020-06-30', 40, 'a', 6300, 'Akmal', 'shabbir', 'EXPIRE'),
+(2, 'summer camp', 'Boys lets get this thing going', 68, '2020-07-15', '2020-07-20', 38, 'b', 63430, 'bakmal', 'shakmal', 'EXPIRE'),
+(3, 'Cold camp', 'This camp can pissed ya off', 70, '2020-07-15', '2020-07-16', 15, 'Anyone with 2 legs', 5000, 'Sallo bhai', '', 'ACTIVE'),
+(4, 'North batch', 'north batch description', 71, '2020-07-15', '2020-07-24', 50, 'criteria', 6000, 'Ali', '', 'ACTIVE');
 
 -- --------------------------------------------------------
 
@@ -270,10 +274,10 @@ CREATE TABLE `training_register` (
 --
 
 INSERT INTO `training_register` (`id`, `batch_code`, `member_code`, `fees_paid`, `payment_mode`, `available_seats`, `register_seats`, `confirmation`) VALUES
-(49, 2, 12, '63430', 'Jaaz Cash', 38, 1, 'Confirmed'),
-(51, 3, 12, '5000', 'Jaaz Cash', 15, 1, 'Wait'),
-(55, 1, 11, '6300', 'Jaaz Cash', 40, 1, 'Wait'),
-(56, 3, 11, '5000', 'Jaaz Cash', 15, 1, 'Wait');
+(60, 3, 12, '5000', 'Easy Paisa', 15, 1, 'Wait'),
+(61, 1, 11, '6300', 'Easy Paisa', 40, 1, 'Confirmed'),
+(62, 4, 11, '6000', 'Easy Paisa', 50, 1, 'Confirmed'),
+(64, 2, 11, '63430', 'Easy Paisa', 38, 1, 'Wait');
 
 --
 -- Indexes for dumped tables
@@ -364,13 +368,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `grounds`
 --
 ALTER TABLE `grounds`
-  MODIFY `ground_code` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `ground_code` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `ground_booking`
 --
 ALTER TABLE `ground_booking`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `notices`
@@ -382,35 +386,29 @@ ALTER TABLE `notices`
 -- AUTO_INCREMENT for table `register_club`
 --
 ALTER TABLE `register_club`
-  MODIFY `club_code` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+  MODIFY `club_code` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 
 --
 -- AUTO_INCREMENT for table `register_member`
 --
 ALTER TABLE `register_member`
-  MODIFY `member_code` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `member_code` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `training_batch`
 --
 ALTER TABLE `training_batch`
-  MODIFY `batch_code` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `batch_code` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `training_register`
 --
 ALTER TABLE `training_register`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `grounds`
---
-ALTER TABLE `grounds`
-  ADD CONSTRAINT `grounds_ibfk_1` FOREIGN KEY (`club_code`) REFERENCES `register_club` (`club_code`);
 
 --
 -- Constraints for table `ground_booking`
