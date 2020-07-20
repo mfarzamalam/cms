@@ -33,9 +33,24 @@
         
         $id = $_POST['id'];
         
-        $q = "DELETE FROM `register_member` WHERE `member_code`='$id'";
+        $ground = "SELECT * FROM `ground_booking` WHERE `member_code`='$id'";
+        $gr = mysqli_query($conn,$ground);
+        $check_ground = mysqli_num_rows($gr);
 
-        $r = mysqli_query($conn,$q);
+        $batch = "SELECT * FROM `training_register` WHERE `member_code`='$id'";
+        $br = mysqli_query($conn,$batch);
+        $check_batch = mysqli_num_rows($br);
+
+        if($check_ground > 0 || $check_batch > 0){
+            $q = "UPDATE `signin_member` SET `status`='OFF' WHERE `member_code`='$id'";
+            $r = mysqli_query($conn,$q);
+        } else {
+            $q = "DELETE FROM `signin_member` WHERE `member_code`='$id'";
+            $r = mysqli_query($conn,$q);
+
+            $q = "DELETE FROM `register_member` WHERE `member_code`='$id'";
+            $r = mysqli_query($conn,$q);
+        }
 
         if($r){
             header('location:index.php');

@@ -1,6 +1,6 @@
 <?php
 
-    $to = "rockybd1995@gmail.com";
+    $to = "mfarzamalam@gmail.com";
     $from = $_REQUEST['email'];
     $name = $_REQUEST['name'];
     $subject = $_REQUEST['subject'];
@@ -32,6 +32,13 @@
 	$body .= "</tbody></table>";
 	$body .= "</body></html>";
 
-    $send = mail($to, $subject, $body, $headers);
+	$send = mail($to, $subject, $body, $headers);
+	
+	if($send){
+		header('location:index.php');
+	} else{
+		header('location:contact.php');
+	}
+
 
 ?>

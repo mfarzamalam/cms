@@ -140,6 +140,7 @@
                     <th> Address</th>
                     <th> Ground Booking</th>
                     <th> Batch Registration</th>
+                    <th>STATUS</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -172,6 +173,15 @@
                       ?>
 
                       <td><?php echo $count; ?></td>
+
+                      <?php // STATUS OF MEMBER 
+                        $q1 = "SELECT * FROM `signin_member` WHERE `member_code`='$row[member_code]'";
+                        $r1 = mysqli_query($conn,$q1);
+                        $status = mysqli_fetch_assoc($r1);
+
+                      ?>
+
+                    <td><?php echo $status['status']?></td>
 
                     </tr>
                   <?php } ?>
