@@ -39,15 +39,24 @@
         
         $groundcode=$_POST['groundcode'];
         
-        $q = "DELETE FROM `grounds` WHERE `ground_code`='$groundcode'";
+        $ground = "SELECT * FROM `ground_booking` WHERE `ground_code`='$groundcode'";
+        $gr = mysqli_query($conn,$ground);
+        $check_ground = mysqli_num_rows($gr);
 
-        $r = mysqli_query($conn,$q);
+        if($check_ground > 0){
+                $q = "UPDATE `grounds` SET `status`='OFF',`available`='No' WHERE `ground_code`='$groundcode'";
+                $r = mysqli_query($conn,$q);
+        }else {
+                $q = "DELETE FROM `grounds` WHERE `ground_code`='$groundcode'";
+                $r = mysqli_query($conn,$q);
+        }
 
         if($r){
-            header('location:clubGround.php');
+            header('location:clubGround.php?error=All Good');
         }else {
             header('location:clubGround.php?error=Unable to Delete');
         }
+
     } else {
         header('location:clubGround.php');
     }

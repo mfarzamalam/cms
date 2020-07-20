@@ -37,8 +37,18 @@
       } else if (isset($_POST['Delete'])){
           
             $batchcode=$_POST['batchcode'];
-            $q = "DELETE FROM `training_batch` WHERE `batch_code`='$batchcode'";
-            $r = mysqli_query($conn,$q);
+           
+            $batch = "SELECT * FROM `training_register` WHERE `batch_code`='$batchcode'";
+            $br = mysqli_query($conn,$batch);
+            $check_batch = mysqli_num_rows($br);
+
+            if($check_batch > 0){
+                $q = "UPDATE `training_batch` SET `status`='EXPIRE' WHERE `batch_code`='$batchcode'";
+                $r = mysqli_query($conn,$q);
+            } else {
+                $q = "DELETE FROM `training_batch` WHERE `batch_code`='$batchcode'";
+                $r = mysqli_query($conn,$q);
+            }
 
             if($r){
                 header('location:clubBatch.php');

@@ -60,7 +60,7 @@
                 $ground_register = mysqli_num_rows($gbr);
                 
                 if($ground_register > 0){
-                    $q = "UPDATE `grounds` SET `status`='OFF' WHERE `ground_code`='$row[ground_code]'";
+                    $q = "UPDATE `grounds` SET `status`='OFF',`available`='No' WHERE `ground_code`='$row[ground_code]'";
                     $r = mysqli_query($conn,$q);
                 } else {
                     $q = "DELETE FROM `grounds` WHERE `ground_code`='$row[ground_code]'";
@@ -97,6 +97,9 @@
             $q = "DELETE FROM `register_club` WHERE `club_code`='$id'";
             $r = mysqli_query($conn,$q);
         }
+
+        $q = "UPDATE `signin_club` SET `status`='OFF' WHERE `club_code`='$id'";
+        $r = mysqli_query($conn,$q);
 
         if($r){
             header('location:index.php?error=All Good');

@@ -77,6 +77,7 @@
                     <th>Coach Name</th>
                     <th>Coach 2</th>
                     <th>Club belong</th>
+                    <th>STATUS</th>
                     <th>Action</th>
                   </tr>
             </thead>
@@ -101,6 +102,7 @@
                     <td><?php echo $row['coach_name']; ?></td>   
                     <td><?php echo $row['coach_name2']; ?></td>  
                     <td><?php echo $club['club_name']; ?></td>   
+                    <td><?php echo $row['status']; ?></td>  
                     
                     <td>
                       <button class="btn btn-primary btn-xs"><a href="clubBatchForm.php?batchcode=<?php echo $row['batch_code']?>&stat=Edit"><i class="fa fa-pencil"></i></a></button>

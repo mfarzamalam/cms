@@ -78,6 +78,7 @@
                     <th>Night Charges</th>
                     <th>Club belong</th>
                     <th>Available</th>
+                    <th>STATUS</th>
                     <th>Action</th>
                   </tr>
             </thead>
@@ -91,7 +92,6 @@
                       $q3 = "SELECT * FROM `register_club` WHERE `club_code`='$row[club_code]'";
                       $r3 = mysqli_query($conn,$q3);
                       $club = mysqli_fetch_assoc($r3);
-                  
                   ?>
                     <td><?php echo $row['ground_name']; ?></td>
                     <td><?php echo $row['ground_des']; ?></td>   
@@ -103,10 +103,11 @@
                     <td><?php echo $row['Night']; ?></td>  
                     <td><?php echo $club['club_name']; ?></td>   
                     <td><?php echo $row['available']; ?></td>   
+                    <td><?php echo $row['status']?></td>
                     
                     <td>
                       <button class="btn btn-primary btn-xs"><a href="clubGroundForm.php?ground_code=<?php echo $row['ground_code']?>&stat=Edit"><i class="fa fa-pencil"></i></a></button>
-                      <button class="btn btn-danger btn-xs"><a href="clubGroundForm.php?ground_code =<?php echo $row['ground_code']?>&stat=Delete"><i class="fa fa-trash-o "></i></a></button>
+                      <button class="btn btn-danger btn-xs"><a href="clubGroundEdit&Delete.php?ground_code =<?php echo $row['ground_code']?>&stat=Delete"><i class="fa fa-trash-o "></i></a></button>
                     </td>
 
                     <?php } ?>
