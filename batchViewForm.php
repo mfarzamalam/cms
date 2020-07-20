@@ -3,9 +3,9 @@
         if(!isset($_SESSION['club_code'])){
             header('location:ClubLoginForm.php');
         }
-     
-        $q = "SELECT * FROM `training_batch` WHERE `club_code`='$_SESSION[club_code]' AND `status`='ACTIVE' ORDER BY `batch_code` DESC";
-        $r = mysqli_query($conn,$q);
+        $querybatch="SELECT * FROM training_batch";
+        $resultbatch=mysqli_query($conn,$querybatch);
+       
 ?>
 
 <!doctype html>
@@ -50,118 +50,30 @@
                 </div>
             </section>
         <!--::breadcrumb part end::-->
+        <div class="form-group row">
+            <label for="inputState" class="col-sm-2 col-form-label">Batch</label>
+      <div class="col-sm-10">
+      <select id="daysid"  class="form-control">
+     <option value="" selected>Select Batch</option>
+                                        <?php
+        while($rowbatch=mysqli_fetch_array($resultbatch))
+        {
+        ?>
+            <option value=<?php echo $rowbatch['batch_code'];?>>
+         <?php echo $rowbatch['batch_name'];?>
+            </option>
+        <?php
+        }
+        ?>
+                                         
+                                        
+      </select>
+      </div>
+    </div>
+   
 
-    <?php while($res = mysqli_fetch_assoc($r)) { ?>
-
-        <form method="POST" action="batchEdit&Delete.php" class="page-wrapper p-t-45 p-b-50">
-            <div class="wrapper wrapper--w790">
-                    <div class="card card-5">
-                        <div class="card-heading">
-                            <h2 class="title"><?php echo $res['batch_name']?></h2>
-                        </div>
-                        <div class="card-body">
-                            <form method="POST">
-                            <div class="form-row">
-                                    <div class="name">Batch Name</div>
-                                    <div class="value">
-                                        <div class="input-group">
-                                            <input class="input--style-5" type="text" name="batchname" value="<?php echo $res['batch_name']?>">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="name">Batch Description</div>
-                                    <div class="value">
-                                        <div class="input-group">
-                                            <input class="input--style-5" type="text" name="batchdes" value="<?php echo $res['batch_des']?>">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="value">
-                                        <div class="input-group">
-                                            <input class="input--style-5" type="hidden" name="batchcode" value="<?php echo $res['batch_code']?>">
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="form-row">
-                                    <div class="name">Registration Start Date</div>
-                                    <div class="value">
-                                        <div class="input-group">
-                                            <input class="input--style-5" type="date" name="sdate" value="<?php echo $res['start_date']?>">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="form-row">
-                                    <div class="name">Registration End Date</div>
-                                    <div class="value">
-                                        <div class="input-group">
-                                            <input class="input--style-5" type="date" name="edate" value="<?php echo $res['end_date']?>">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="form-row">
-                                    <div class="name">Member limit</div>
-                                    <div class="value">
-                                        <div class="input-group">
-                                            <input class="input--style-5" type="number" name="mlimit" value="<?php echo $res['member_limit']?>">
-                                        </div>
-                                    </div>
-                                </div>                            
-                                
-                                <div class="form-row">
-                                    <div class="name">Eligiblity Criteria</div>
-                                    <div class="value">
-                                        <div class="input-group">
-                                            <input class="input--style-5" type="text" name="ecr" value="<?php echo $res['eligible_criteria']?>">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="form-row">
-                                    <div class="name">Fees (Rs)</div>
-                                    <div class="value">
-                                        <div class="input-group">
-                                            <input class="input--style-5" type="number" name="fees" value="<?php echo $res['fees']?>">
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="form-row">
-                                    <div class="name">Coach Name</div>
-                                    <div class="value">
-                                        <div class="input-group">
-                                            <input class="input--style-5" type="text" name="cname1" value="<?php echo $res['coach_name']?>">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="form-row">
-                                    <div class="name">Second Coach Name (Optional) </div>
-                                    <div class="value">
-                                        <div class="input-group">
-                                            <input class="input--style-5" type="text" name="cname2" value="<?php echo $res['coach_name2']?>">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div>
-                                    <?php if(isset($_GET['error'])) { ?>
-                                        <label style="color: red;" class="label label--block"> <?php echo $_GET['error'] ?></label>
-                                    <?php } ?>
-                                    <button class="btn btn--radius-2 btn--red" name="Edit" type="submit">Edit</button>
-                                    <button class="btn btn--radius-2 btn--red" name="Delete" type="submit" onclick='return checkdel()'>Delete</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-        </form>
-
-                                <?php } ?>
+        <div id="fo">
+</div>
 
   <script>
         function checkdel(){
@@ -170,5 +82,29 @@
     
     </script>
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
+<script>
+$(document).ready(function(){
+  $("#daysid").change(function(){
+   
+    bi=$('#daysid').val();
+   // alert(bi);
+   
+    if(bi){
+    $.ajax({
+        type:'POST',
+        url:'batchviewfatch.php',
+        data:'batchid='+bi,
+        success:function(html){
+           // alert(html);
+            $('#fo').html(html);
+         //   $('#city').html('<option value="">Select state first</option>'); 
+        }
+    });
+            }
+
+  });
+});
+</script>
 </html>

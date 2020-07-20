@@ -6,6 +6,8 @@
     
     $q = "SELECT * FROM training_batch";
     $qr = mysqli_query($conn,$q);
+    $querybatch="SELECT * FROM training_batch";
+    $resultbatch=mysqli_query($conn,$querybatch);
     
 ?>
 
@@ -27,7 +29,26 @@
 <body>
 
    <?php include 'header.php'; ?>
-
+   <div class="form-group row">
+            <label for="inputState" class="col-sm-2 col-form-label">Batch</label>
+      <div class="col-sm-10">
+      <select id="daysid"  class="form-control">
+     <option value="" selected>Select Batch</option>
+                                        <?php
+        while($rowbatch=mysqli_fetch_array($resultbatch))
+        {
+        ?>
+            <option value=<?php echo $rowbatch['batch_code'];?>>
+         <?php echo $rowbatch['batch_name'];?>
+            </option>
+        <?php
+        }
+        ?>
+                                         
+                                        
+      </select>
+      </div>
+    </div>
         <!--::breadcrumb part start::-->
             <section class="breadcrumb breadcrumb_bg">
                 <div class="container">
@@ -44,97 +65,33 @@
                 </div>
             </section>
         <!--::breadcrumb part end::-->
-
-    <?php while($c = mysqli_fetch_assoc($qr)) {
-            $total = ""; 
-            $s = "SELECT * FROM `training_register` WHERE `batch_code`=$c[batch_code]";
-            $r = mysqli_query($conn,$s);
-            $reg = mysqli_num_rows($r);
-
-            $displayQuery="SELECT * FROM `training_register` WHERE `member_code`='$_SESSION[member_code]' AND `batch_code`='$c[batch_code]'";
-            $displayResult=mysqli_query($conn,$displayQuery);
-
-            $total = $c['member_limit'] - $reg;
-
-               if(mysqli_num_rows($displayResult)<=0){
-
-        ?>
-
-        <form method="POST" action="trainingSub.php" class="page-wrapper p-t-45 p-b-50">
-            <div class="wrapper wrapper--w790">
-                <div class="card card-5">
-                    <div class="card-heading">
-                        <h2 class="title"><?php echo $c['batch_name']?></h2>
-                    </div>
-                    
-                    <div class="card-body">                        
-                        <input type="hidden" name="batchcode" value="<?php echo $c['batch_code']?>">
-                        <input type="hidden" name="membercode" value="<?php echo $_SESSION['member_code']?>">
-                        <input type="hidden" name="fees" value="<?php echo $c['fees']?>">
-                        <input type="hidden" name="Aseats" value="<?php echo $c['member_limit']?>">
-                        <input type="hidden" name="Rseats" value="1">
-                    
-
-                        <div class="form-row">
-                                <div class="name">Fees (per person)</div>
-                                <div class="value">
-                                    <div class="input-group">
-                                        <input class="input--style-5" type="number" value="<?php echo $c['fees']; ?>" disabled>
-                                    </div>
-                                </div>
-                        </div>
-
-                        <div class="form-row">
-                                <div class="name">Available Seats</div>
-                                <div class="value">
-                                    <div class="input-group">
-
-                                        <?php if($total == "") { ?>
-                                            <input class="input--style-5" type="number" value="<?php echo $c['member_limit'];?>" disabled>
-                                        <?php  } else { ?>
-                                            <input class="input--style-5" type="number" value="<?php echo $total ?>" disabled>
-                                        <?php  } ?>
-                                        
-                                    </div>
-                                </div>
-                        </div>
-
-                        <div class="form-row">
-                                <div class="name">Your Seat</div>
-                                <div class="value">
-                                    <div class="input-group">
-                                        <input class="input--style-5" type="number" value="1" disabled>
-                                    </div>
-                                </div>
-                        </div>
-
-                        <div class="form-row">
-                        <div class="name">Payment mode</div>
-                        <div class="value">
-                            <div class="input-group">
-                                <div class="rs-select2 js-select-simple select--no-search">
-                                    <select name="payment" required>
-                                        <option disabled="disabled" value="" selected>Choose option</option>
-                                        <option value="Easy Paisa">Easy Paisa</option>
-                                        <option value="Jaaz Cash">Jaaz Cash</option>
-                                    </select>
-                                    <div class="select-dropdown"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                                <?php if(isset($_GET['error'])) { ?>
-                                    <label style="color: red;" class="label label--block"> <?php echo $_GET['error'] ?></label>
-                                <?php } ?>
-                                <button class="btn btn--radius-2 btn--red" name="register" type="submit">Register</button>
-                    </div>
-                </div>
-            </div>
-        </form>
-                        <?php } ?>
-                            <?php } ?>
+        <div id="fo">
+</div>
+   
   
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
+<script>
+$(document).ready(function(){
+  $("#daysid").change(function(){
+  //  alert("The text has been changed.");
+    bi=$('#daysid').val();
+   
+    if(bi){
+    $.ajax({
+        type:'POST',
+        url:'batchfatch.php',
+        data:'batchid='+bi,
+        success:function(html){
+          //  alert(html);
+            $('#fo').html(html);
+         //   $('#city').html('<option value="">Select state first</option>'); 
+        }
+    });
+            }
+
+  });
+});
+</script>
 </html>
