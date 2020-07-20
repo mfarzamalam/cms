@@ -2,10 +2,15 @@
 
     if(isset($_GET['id'])){
         $id = $_GET['id'];
+
         $q = "SELECT * FROM `register_club` WHERE `club_code`='$id'";
         $r = mysqli_query($conn,$q);
-
         $val = mysqli_fetch_assoc($r);
+
+        $q1 = "SELECT * FROM `signin_club` WHERE `club_code`='$id'";
+        $r1 = mysqli_query($conn,$q1);
+        $status = mysqli_fetch_assoc($r1);
+
     }else {
         header('location:index.php?error=Please select a club');
     }
@@ -71,9 +76,9 @@
                     </div>
                   </div>
                   <div class="form-group ">
-                    <label for="clubby" class="control-label col-lg-2">Club built year</label>
+                    <label for="clubjoin" class="control-label col-lg-2">Joining Date</label>
                     <div class="col-lg-10">
-                      <input class="form-control " id="clubby" name="clubby" type="date" value="<?php echo $val['club_built_year'] ?>" />
+                      <input class="form-control " id="clubjoin" name="clubjoin" type="date" value="<?php echo $val['joining_date'] ?>" />
                     </div>
                   </div>
                   <div class="form-group ">
@@ -88,12 +93,7 @@
                       <input class="form-control " id="clubPN" name="clubPN" type="number" value="<?php echo $val['club_president_num'] ?>" />
                     </div>
                   </div>
-                  <div class="form-group ">
-                    <label for="clubVP" class="control-label col-lg-2">Club Vice President</label>
-                    <div class="col-lg-10">
-                      <input class="form-control " id="clubVP" name="clubVP" type="text" value="<?php echo $val['club_vice_president'] ?>" />
-                    </div>
-                  </div>
+                 
                   <div class="form-group ">
                     <label for="clubSec" class="control-label col-lg-2">Club Secretary</label>
                     <div class="col-lg-10">
@@ -106,24 +106,18 @@
                       <input class="form-control " id="clubSecN" name="clubSecN" type="number" value="<?php echo $val['club_secretary_num'] ?>" />
                     </div>
                   </div>
-                  <div class="form-group ">
-                    <label for="CT" class="control-label col-lg-2">Club Treasure</label>
-                    <div class="col-lg-10">
-                      <input class="form-control " id="CT" name="CT" type="text" value="<?php echo $val['club_treasurer'] ?>" />
-                    </div>
-                  </div>
-
-                  <div class="form-group ">
-                    <label for="CM" class="control-label col-lg-2">Club Management</label>
-                    <div class="col-lg-10">
-                      <input class="form-control " id="CM" name="CM" type="text" value="<?php echo $val['club_management'] ?>" />
-                    </div>
-                  </div>
-
+                 
                   <div class="form-group ">
                     <label for="relation" class="control-label col-lg-2">Relation with Club</label>
                     <div class="col-lg-10">
-                      <input class="form-control " id="relation" name="relation" type="text" value="<?php echo $val['relation_with_club'] ?>" />
+                      <input class="form-control " id="relation" name="relation" type="text" placeholder="Secretary/President/Owner" value="<?php echo $val['relation_with_club'] ?>" />
+                    </div>
+                  </div>
+
+                  <div class="form-group ">
+                    <label for="status" class="control-label col-lg-2">Club Status</label>
+                    <div class="col-lg-10">
+                      <input class="form-control " id="status" name="status" type="text" value="<?php echo $status['status'] ?>" />
                     </div>
                   </div>
 

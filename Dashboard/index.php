@@ -65,6 +65,8 @@
                     <th>Batches</th>
                     <th>Club president</th>
                     <th>Club secretary</th>
+                    <th>Club secretary number</th>
+                    <th>STATUS</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -73,7 +75,7 @@
                   <tr>
                     <td><?php echo $num += 1;?></td>
                     <td><a href="clubinfo.php?id=<?php echo $list['club_code']?>"><?php echo $list['club_name']?></a></td>
-                    <td><?php echo $list['club_built_year']?></td>
+                    <td><?php echo $list['joining_date']?></td>
                    
                       <?php  // CLUB GROUNDS
 
@@ -95,6 +97,16 @@
                     
                     <td><?php echo $list['club_president']?></td>
                     <td><?php echo $list['club_secretary']?></td>
+                    <td><?php echo $list['club_secretary_num']?></td>
+
+                      <?php // STATUS OF CLUB 
+                        $q1 = "SELECT * FROM `signin_club` WHERE `club_code`='$list[club_code]'";
+                        $r1 = mysqli_query($conn,$q1);
+                        $status = mysqli_fetch_assoc($r1);
+
+                      ?>
+
+                    <td><?php echo $status['status']?></td>
                   </tr>
                 <?php } ?>
                 </tbody>
