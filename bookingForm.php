@@ -44,7 +44,7 @@
                     <div class="card-body">
                         <ul class="tab-list">
                             <li class="tab-list__item active">
-                                <a class="tab-list__link" href="#tab1" data-toggle="tab">hotels</a>
+                                <a class="tab-list__link" data-toggle="tab">Search Grounds</a>
                             </li>
                         </ul>
                         <div class="tab-content">
