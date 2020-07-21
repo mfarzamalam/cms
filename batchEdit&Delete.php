@@ -13,7 +13,7 @@
             $fees=$_POST['fees'];
             $cname1=$_POST['cname1'];
             $cname2=$_POST['cname2'];
-           // $status="ACTIVE";
+            $status="ACTIVE";
         if(empty($batchname) || empty($sdate) || empty($edate) || empty($mlimit) || empty($fees) || empty($cname1)) {
             header('location:batchAddForm.php?error=Please fill all the textboxes');
             exit();
@@ -22,7 +22,7 @@
         $query = "UPDATE training_batch SET `batch_name`='$batchname',`batch_des`='$batchdes',
                                             `club_code`='$_SESSION[club_code]',`start_date`='$sdate',
                                             `end_date`='$edate',`member_limit`='$mlimit',`eligible_criteria`='$ecr',
-                                            `fees`='$fees',`coach_name`='$cname1',`coach_name2`='$cname2' 
+                                            `fees`='$fees',`coach_name`='$cname1',`coach_name2`='$cname2',`status`='$status',
                                         WHERE `batch_code`='$batchcode'";
         
         $result = mysqli_query($conn,$query);

@@ -2,7 +2,7 @@
 
 $c= $_POST["groundid"];
 
-        $q = "SELECT * FROM `grounds` WHERE `club_code`='$_SESSION[club_code]' AND ground_code=$c ORDER BY `ground_code` DESC";
+        $q = "SELECT * FROM `grounds` WHERE `ground_code`='$c'";
         $r = mysqli_query($conn,$q);
     
 

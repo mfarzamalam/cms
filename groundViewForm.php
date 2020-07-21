@@ -4,9 +4,7 @@
         header('location:ClubLoginForm.php');
         }
            
-        $q = "SELECT * FROM `grounds` WHERE `club_code`='$_SESSION[club_code]' ORDER BY `ground_code` DESC";
-        $r = mysqli_query($conn,$q);
-        $queryground="SELECT * FROM grounds";
+        $queryground="SELECT * FROM `grounds` WHERE `club_code`='$_SESSION[club_code]' AND `status`='ON' ORDER BY `ground_code` DESC";
         $resultground=mysqli_query($conn,$queryground);
 
 ?>
@@ -55,27 +53,23 @@
             <label for="inputState" class="col-sm-2 col-form-label">Select Ground</label>
       <div class="col-sm-10">
       <select id="daysid"  class="form-control">
-     <option value="" selected>Select Ground</option>
-                                        <?php
-        while($rowground=mysqli_fetch_array($resultground))
-        {
-        ?>
-            <option value=<?php echo $rowground['ground_code'];?>>
-         <?php echo $rowground['ground_name'];?>
-            </option>
-        <?php
-        }
-        ?>
-                                         
+            <option value="" selected>Select Ground</option>
+
+            <?php while($rowground=mysqli_fetch_array($resultground)) { ?>
+                <option value=<?php echo $rowground['ground_code'];?>><?php echo $rowground['ground_name'];?></option>
+            <?php } ?>
                                         
       </select>
+
       </div>
     </div>
         <!--::breadcrumb part end::-->
   
 
         <div id="fo">
-</div>
+        </div>
+
+        
     <script>
         function checkdel(){
             return confirm('Are you sure you want to delete ?');

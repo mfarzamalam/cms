@@ -3,9 +3,9 @@
         if(!isset($_SESSION['club_code'])){
             header('location:ClubLoginForm.php');
         }
-        $querybatch="SELECT * FROM training_batch";
+        $querybatch="SELECT * FROM `training_batch` WHERE `club_code`='$_SESSION[club_code]' ORDER BY `batch_code` DESC";
         $resultbatch=mysqli_query($conn,$querybatch);
-       
+        
 ?>
 
 <!doctype html>
@@ -54,18 +54,11 @@
             <label for="inputState" class="col-sm-2 col-form-label">Batch</label>
       <div class="col-sm-10">
       <select id="daysid"  class="form-control">
-     <option value="" selected>Select Batch</option>
-                                        <?php
-        while($rowbatch=mysqli_fetch_array($resultbatch))
-        {
-        ?>
-            <option value=<?php echo $rowbatch['batch_code'];?>>
-         <?php echo $rowbatch['batch_name'];?>
-            </option>
-        <?php
-        }
-        ?>
-                                         
+             <option value="" selected>Select Batch</option>
+
+                <?php   while($rowbatch=mysqli_fetch_array($resultbatch)){?>
+                    <option value=<?php echo $rowbatch['batch_code'];?>><?php echo $rowbatch['batch_name'];?></option>
+                <?php } ?>
                                         
       </select>
       </div>
@@ -73,7 +66,7 @@
    
 
         <div id="fo">
-</div>
+        </div>
 
   <script>
         function checkdel(){

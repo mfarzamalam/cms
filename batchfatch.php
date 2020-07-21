@@ -3,7 +3,7 @@
 include 'connection.php';
 
 $c= $_POST["batchid"];
-$q = "SELECT * FROM training_batch where batch_code=".$c;
+$q = "SELECT * FROM training_batch where batch_code='$c'";
 $qr = mysqli_query($conn,$q);
   
 
