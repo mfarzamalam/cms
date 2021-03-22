@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 20, 2020 at 01:20 PM
+-- Generation Time: Mar 22, 2021 at 11:40 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.6
 
@@ -69,7 +69,7 @@ CREATE TABLE `grounds` (
 INSERT INTO `grounds` (`ground_code`, `ground_name`, `ground_des`, `club_code`, `ground_owner`, `ground_owner_num`, `rent_day`, `rent_night`, `Day`, `Night`, `available`, `status`) VALUES
 (19, 'fourth', 'asdasdasd', 68, 'asdasdas', '878978789', 'Yes', 'Yes', 3000, 8000, 'No', 'OFF'),
 (21, 'Sixth', 'asdasdasd', 68, 'asdasdas', '878978789', 'Yes', 'Yes', 3000, 10000, 'No', 'OFF'),
-(23, 'first', 'asdasd', 68, 'asdasd', '654464', 'Yes', 'Yes', 4500, 6500, 'No', 'OFF'),
+(23, 'first', 'asdasd', 68, 'asdasd', '654464', 'Yes', 'Yes', 4500, 6500, 'No', 'ON'),
 (24, 'Eighteen', 'This is the bestest ground in malir cantt', 70, 'Asghar', '03322667306', 'Yes', 'Yes', 1000, 6000, 'Yes', 'OFF'),
 (25, 'Twenty', 'tweny ground description', 71, 'Khizar', '56456464654', 'Yes', 'No', 1500, 5000, 'Yes', 'ON'),
 (26, 'Ground Demo', 'ground description', 71, 'Asghar', '03322667306', 'Yes', 'Yes', 2500, 4000, 'No', 'OFF');
@@ -195,7 +195,7 @@ CREATE TABLE `signin_club` (
 --
 
 INSERT INTO `signin_club` (`club_code`, `username`, `password`, `status`) VALUES
-(68, 'b', 'b', 'OFF'),
+(68, 'b', 'b', 'ON'),
 (69, 'club', 'club', 'ON'),
 (70, 'man', 'man', 'ON'),
 (71, 'north', 'north', 'ON');
@@ -248,7 +248,7 @@ CREATE TABLE `training_batch` (
 
 INSERT INTO `training_batch` (`batch_code`, `batch_name`, `batch_des`, `club_code`, `start_date`, `end_date`, `member_limit`, `eligible_criteria`, `fees`, `coach_name`, `coach_name2`, `status`) VALUES
 (1, 'winter camp', 'abcd', 68, '2020-06-27', '2020-06-30', 40, 'a', 6300, 'Akmal', 'shabbir', 'EXPIRE'),
-(2, 'summer camp', 'Boys lets get this thing going', 68, '2020-07-15', '2020-07-20', 38, 'b', 63430, 'bakmal', 'shakmal', 'EXPIRE'),
+(2, 'summer camp', 'Boys lets get this thing going', 68, '2020-07-15', '2020-07-25', 38, 'b', 63430, 'bakmal', 'shakmal', 'EXPIRE'),
 (3, 'Cold camp', 'This camp can pissed ya off', 70, '2020-07-15', '2020-07-16', 15, 'Anyone with 2 legs', 5000, 'Sallo bhai', '', 'ACTIVE'),
 (4, 'North batch', 'north batch description', 71, '2020-07-15', '2020-07-24', 50, 'criteria', 6000, 'Ali', '', 'ACTIVE');
 
@@ -274,10 +274,9 @@ CREATE TABLE `training_register` (
 --
 
 INSERT INTO `training_register` (`id`, `batch_code`, `member_code`, `fees_paid`, `payment_mode`, `available_seats`, `register_seats`, `confirmation`) VALUES
-(60, 3, 12, '5000', 'Easy Paisa', 15, 1, 'Wait'),
-(61, 1, 11, '6300', 'Easy Paisa', 40, 1, 'Confirmed'),
-(62, 4, 11, '6000', 'Easy Paisa', 50, 1, 'Confirmed'),
-(64, 2, 11, '63430', 'Easy Paisa', 38, 1, 'Wait');
+(65, 1, 11, '6300', 'Jaaz Cash', 40, 1, 'Confirmed'),
+(66, 4, 11, '6000', 'Jaaz Cash', 50, 1, 'Confirmed'),
+(67, 2, 11, '63430', 'Easy Paisa', 38, 1, 'Confirmed');
 
 --
 -- Indexes for dumped tables
@@ -404,7 +403,7 @@ ALTER TABLE `training_batch`
 -- AUTO_INCREMENT for table `training_register`
 --
 ALTER TABLE `training_register`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
 -- Constraints for dumped tables
